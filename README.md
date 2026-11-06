@@ -84,6 +84,25 @@ Decisiones de diseño tomadas a partir de las referencias:
 - **Temas:** claro por defecto y oscuro, con contraste de texto mínimo de 4.5:1 en ambos.
 - **Tipografía (2 familias):** Archivo para títulos e Inter para texto.
 - **Estados:** error y éxito se comunican con ícono, texto y borde, nunca solo con color.
+- **Tokens en Figma:** variables de color (modo claro y oscuro), espaciado (4 a 96) y radios, más estilos de texto. Todos los componentes están vinculados a esas variables, así que el cambio de tema es automático.
+
+[![Design system: fundamentos](docs/design-system-fundamentos.png)](docs/design-system-fundamentos.png)
+
+### Componentes
+
+Cinco componentes con variantes, hechos con tokens y estilos de texto:
+
+| Componente | Variantes |
+|---|---|
+| **Button** | primario y secundario × default, hover, focus (anillo doble) y disabled |
+| **Tag** | contorno, relleno y resaltado |
+| **Input** | default, focus, error (borde grueso + ícono + mensaje, sin depender del color) y disabled |
+| **Timeline item** | default y en curso (punto relleno + etiqueta) |
+| **Project tile** | oscuro y claro × default y hover (abanico abierto + brillo) |
+
+[![Componentes: button, tag e input](docs/design-system-componentes-1.png)](docs/design-system-componentes-1.png)
+
+[![Componentes: timeline item y project tile](docs/design-system-componentes-2.png)](docs/design-system-componentes-2.png)
 
 ## Fuentes, recursos y créditos
 
