@@ -27,9 +27,33 @@ Trabajo final de **Diseño UX-UI 2026** · Licenciatura en Sistemas de Informaci
 5. **Wireframes, design system y prototipo:** en Figma _(en curso)_.
 6. **Validación:** test de usabilidad con al menos 3 personas _(pendiente)_.
 
-![Investigación: usuario, benchmark y moodboard](docs/investigacion.png)
+_Las imágenes son grandes: hacé clic en cada una para verla a tamaño completo._
 
-![Arquitectura de información: sitemap y card sorting](docs/arquitectura-informacion.png)
+### Investigación
+
+[![Investigación: usuario, benchmark y moodboard](docs/investigacion.png)](docs/investigacion.png)
+
+### Arquitectura de información
+
+Una sola página con anclas, más un caso de estudio interno y una página 404. Proyectos va antes que Skills porque el usuario objetivo necesita ver un proyecto real en menos de 30 segundos (la consigna permite cambiar el orden si se justifica).
+
+| # | Sección | Ancla |
+|---|---|---|
+| 01 | Header / Navegación | global |
+| 02 | Hero | `#inicio` |
+| 03 | Métricas | `#metricas` |
+| 04 | Proyectos | `#proyectos` |
+| 05 | Skills | `#skills` |
+| 06 | Experiencia / Formación | `#experiencia` |
+| 07 | Sobre mí (con "Cómo trabajo") | `#sobre-mi` |
+| 08 | Contacto | `#contacto` |
+| 09 | Footer | global |
+
+Páginas adicionales: `caso-hoypadel.html` (caso de estudio) y `404.html`.
+
+[![Sitemap](docs/arquitectura-sitemap.png)](docs/arquitectura-sitemap.png)
+
+[![Card sorting](docs/arquitectura-card-sorting.png)](docs/arquitectura-card-sorting.png)
 
 ## Design system (resumen)
 
