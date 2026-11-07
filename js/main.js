@@ -301,4 +301,51 @@
       figure.style.removeProperty('--py');
     });
   }
+
+
+  /* Pantalla de entrada: se retira cuando la página cargó (y, la primera vez, cuando el logo terminó de escribirse, ~1,1 s).
+     Si se llegó por la cortina, sale enseguida. */
+  if (root.classList.contains('pt-arriving')) {
+    const SHOW = root.classList.contains('pt-wipe') ? 0 : 1100;
+    const done = () => setTimeout(() => root.classList.add('pt-done'), Math.max(0, SHOW - performance.now()));
+    if (document.readyState === 'complete') done();
+    else {
+      window.addEventListener('load', done, { once: true });
+      setTimeout(done, 2000);
+    }
+  }
+
+  /* Cambio de página (inicio ↔ caso de estudio): la cortina entra con el logo ya hecho y recién después se navega.
+     Con movimiento reducido, teclas modificadoras o pestaña nueva, el enlace funciona normal. */
+  (() => {
+    let leaving = false;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* Volver con "atrás" desde el caché: no dejar la cortina puesta */
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        leaving = false;
+        root.classList.remove('pt-leaving');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href]');
+      if (!a || leaving || calm.matches || e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (a.target && a.target !== '_self') return;
+      if (a.hasAttribute('download')) return;
+      const url = new URL(a.href, location.href);
+      if (url.protocol !== location.protocol || url.host !== location.host) return;
+      if (url.pathname === location.pathname) return;
+      e.preventDefault();
+      leaving = true;
+      root.classList.remove('pt-arriving', 'pt-wipe', 'pt-done');
+      root.classList.add('pt-leaving');
+      setTimeout(() => {
+        try { sessionStorage.setItem('pt-wipe', '1'); } catch (err) { /* sin storage, igual cambia */ }
+        location.href = url.href;
+      }, 400);
+    });
+  })();
 })();
