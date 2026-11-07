@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matías González · Desarrollo web y UX/UI para tu negocio</title>
+  <meta name="description" content="Portfolio de Matías González: estudiante de Lic. en Sistemas, autodidacta y emprendedor. Desarrollo web y diseño UX/UI para que tu negocio sea más simple.">
+  <meta name="theme-color" content="#233245">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Matías González · Tu negocio, más simple">
+  <meta property="og:description" content="Desarrollo web y diseño UX/UI. Casos de estudio, proyectos y contacto.">
+  <meta property="og:image" content="assets/img/hero-desktop.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <script>
+    /* Aplica el tema guardado antes de pintar, para evitar el parpadeo */
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="nav-sentinel" aria-hidden="true"></div>
+
+  <header class="nav" data-nav>
+    <div class="nav__bar">
+      <a class="nav__logo" href="#inicio" aria-label="Matías González, ir al inicio">MG</a>
+      <nav class="nav__links" aria-label="Principal">
+        <ul>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--light nav__cta" href="#contacto">Contacto</a>
+      <button class="icon-btn icon-btn--plain" type="button" data-theme-toggle aria-label="Cambiar entre tema claro y oscuro">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn icon-btn--plain nav__burger" type="button" data-menu-open aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu-movil" hidden role="dialog" aria-modal="true" aria-label="Menú">
+    <div class="menu__head">
+      <a class="nav__logo" href="#inicio" data-menu-close aria-label="Matías González, ir al inicio">MG</a>
+      <button class="icon-btn" type="button" data-menu-close aria-label="Cerrar menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="menu__links" aria-label="Menú móvil">
+      <a href="#skills" data-menu-close>Skills</a>
+      <a href="#proyectos" data-menu-close>Proyectos</a>
+      <a href="#experiencia" data-menu-close>Experiencia</a>
+      <a href="#sobre-mi" data-menu-close>Sobre mí</a>
+    </nav>
+    <div class="menu__extra">
+      <a class="btn btn--primary" href="#contacto" data-menu-close>Contacto</a>
+      <a href="assets/Matias-Gonzalez-CV.pdf" download>Descargar CV →</a>
+    </div>
+  </div>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="titulo-hero">
+      <picture class="hero__media">
+        <source media="(max-width: 767px)" srcset="assets/img/hero-mobile.webp" width="626" height="1200">
+        <img src="assets/img/hero-desktop.webp" width="889" height="900" alt="Retrato de Matías González sonriendo, con camisa oscura, frente a una pared clara" fetchpriority="high">
+      </picture>
+
+      <div class="hero__content">
+        <p class="hero__hello">Hola, soy</p>
+        <h1 class="hero__name" id="titulo-hero">Matías González</h1>
+        <p class="hero__headline">Tu negocio, <span class="mark">más simple</span></p>
+        <p class="hero__desc">Estudiante de Lic. en Sistemas, autodidacta y emprendedor.</p>
+
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#contacto">Hablemos de tu negocio
+            <span class="btn__arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="btn btn--ghost" href="#proyectos">Ver proyectos</a>
+        </div>
+
+        <div class="hero__social">
+          <a class="icon-btn" href="https://github.com/matiasadriangonzalez" target="_blank" rel="noopener" aria-label="GitHub (se abre en una pestaña nueva)">GH</a>
+          <a class="icon-btn" href="https://www.linkedin.com/in/mat%C3%ADas-gonz%C3%A1lez-69366821a/" target="_blank" rel="noopener" aria-label="LinkedIn (se abre en una pestaña nueva)">in</a>
+          <a class="icon-btn" href="mailto:matiasadriangonzalez23@gmail.com" aria-label="Escribime un email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+          <span class="pill"><span class="pill__dot" aria-hidden="true"></span>Disponible para proyectos</span>
+        </div>
+      </div>
+
+      <a class="scroll" href="#skills" data-scroll-hint>
+        <span class="scroll__label">SCROLL PARA EXPLORAR</span>
+        <span class="scroll__circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+        <span class="visually-hidden">Ir a Skills</span>
+      </a>
+    </section>
+
+    <!-- Secciones pendientes (tareas T2 a T4 de odd/tasks/portfolio-sitio.md) -->
+    <section class="section" id="skills" aria-labelledby="t-skills">
+      <h2 class="section__title" id="t-skills">Skills</h2>
+      <p class="section__todo">En construcción.</p>
+    </section>
+    <section class="section" id="proyectos" aria-labelledby="t-proyectos">
+      <h2 class="section__title" id="t-proyectos">Proyectos</h2>
+      <p class="section__todo">En construcción.</p>
+    </section>
+    <section class="section" id="metricas" aria-labelledby="t-metricas">
+      <h2 class="section__title" id="t-metricas">Métricas</h2>
+      <p class="section__todo">En construcción.</p>
+    </section>
+    <section class="section" id="experiencia" aria-labelledby="t-experiencia">
+      <h2 class="section__title" id="t-experiencia">Experiencia y formación</h2>
+      <p class="section__todo">En construcción.</p>
+    </section>
+    <section class="section" id="sobre-mi" aria-labelledby="t-sobre">
+      <h2 class="section__title" id="t-sobre">Sobre mí</h2>
+      <p class="section__todo">En construcción.</p>
+    </section>
+    <section class="section" id="contacto" aria-labelledby="t-contacto">
+      <h2 class="section__title" id="t-contacto">Contacto</h2>
+      <p class="section__todo">En construcción.</p>
+    </section>
+  </main>
+
+  <footer class="section" data-footer>
+    <p class="section__todo">Footer en construcción.</p>
+  </footer>
+
+  <a class="fab" href="https://wa.me/543442670050" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp (se abre en una pestaña nueva)" data-fab>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.1L2 22l5.05-1.6A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.2-3 .95.98-2.92-.2-.3a8.1 8.1 0 0 1 6.72-12.53zm-3.3 4.1c-.2 0-.5.07-.77.37-.26.3-1 1-1 2.45s1.07 2.85 1.22 3.05c.15.2 2.1 3.2 5.1 4.5 2.5 1.05 3 .85 3.55.8.55-.05 1.75-.72 2-1.4.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35-.3-.15-1.75-.87-2.02-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.65-1.62-.9-2.2-.23-.57-.47-.5-.67-.5z"/></svg>
+  </a>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

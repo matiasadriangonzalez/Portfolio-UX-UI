@@ -1,0 +1,164 @@
+/* Componentes del design system: botón, píldora, marca resaltada, botón de ícono, WhatsApp FAB. */
+
+/* Botón: reposo, hover (velo suave), foco (base.css) y presionado */
+.btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 48px;
+  padding: 0 var(--s-5);
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.2s var(--ease);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--veil, rgb(35 50 69 / 0.1));
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--lino);
+  color: var(--marino);
+}
+
+.btn--ghost {
+  --veil: rgb(255 255 255 / 0.12);
+  border-color: rgb(240 237 231 / 0.55);
+  color: var(--on-dark);
+}
+
+.btn--light {
+  background: var(--crema);
+  color: var(--marino);
+  min-height: 40px;
+  padding: 0 var(--s-4);
+  font-size: 0.9375rem;
+}
+
+.btn__arrow {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: calc(var(--s-3) * -1 + 4px);
+  border-radius: 50%;
+  background: var(--marino);
+  color: var(--crema);
+}
+
+@media (hover: hover) {
+  .btn:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Marca resaltada ("más simple") */
+.mark {
+  display: inline-block;
+  padding: 0 0.18em 0.04em;
+  border-radius: var(--r-2);
+  background: var(--lino);
+  color: var(--marino);
+}
+
+/* Píldora de estado */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 48px;
+  padding: 0 var(--s-4);
+  border: 1px solid rgb(240 237 231 / 0.35);
+  border-radius: var(--r-pill);
+  color: var(--on-dark);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lino);
+}
+
+/* Botón de ícono (redes, tema, menú) */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgb(240 237 231 / 0.45);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--on-dark);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background-color 0.25s var(--ease);
+}
+
+.icon-btn--plain {
+  border-color: transparent;
+}
+
+@media (hover: hover) {
+  .icon-btn:hover {
+    background: rgb(255 255 255 / 0.14);
+  }
+}
+
+/* Botón flotante de WhatsApp: sin movimiento permanente, solo un halo en hover */
+.fab {
+  position: fixed;
+  right: var(--s-5);
+  bottom: var(--s-7);
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--lino);
+  color: var(--marino);
+  box-shadow: 0 6px 16px rgb(26 38 64 / 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s, box-shadow 0.3s var(--ease);
+}
+
+.fab.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .fab:hover {
+    box-shadow: 0 6px 16px rgb(26 38 64 / 0.28), 0 0 0 8px rgb(201 190 174 / 0.35);
+  }
+}
+
+@media (max-width: 767px) {
+  .fab {
+    right: var(--s-4);
+    bottom: 72px;
+  }
+}

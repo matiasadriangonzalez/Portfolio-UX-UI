@@ -1,0 +1,62 @@
+/* Design tokens: espejo de las variables de Figma (Primitives, Color, Spacing, Radius). */
+:root {
+  /* Primitives */
+  --marino: #233245;
+  --piedra: #ded6ca;
+  --lino: #c9beae;
+  --azul-polvo: #626e84;
+  --crema: #f0ede7;
+
+  /* Color · Light (default) */
+  --bg: var(--crema);
+  --text: var(--marino);
+  --muted: #4f5a70; /* azul polvo oscurecido: 5.9:1 sobre crema (AA para texto chico) */
+  --tile-alt: var(--piedra);
+  --accent: var(--lino);
+  --line: rgb(35 50 69 / 0.18);
+  --hero-bg: var(--marino); /* el hero y el footer son marino en ambos temas */
+  --on-dark: var(--crema);
+  --on-dark-muted: #b9c1cf;
+
+  /* Tipografía */
+  --font-display: "Archivo Black", "Arial Black", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* Radius */
+  --r-1: 8px;
+  --r-2: 16px;
+  --r-3: 24px;
+  --r-4: 32px;
+  --r-pill: 999px;
+
+  /* Layout */
+  --nav-h: 76px;
+  --gutter: 24px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #1b2634;
+  --text: var(--crema);
+  --muted: #b2bac8;
+  --tile-alt: #2a394d;
+  --line: rgb(240 237 231 / 0.18);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 60px;
+    --gutter: 0px; /* el hero va de borde a borde en celular */
+  }
+}
