@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada · Matías González</title>
+  <meta name="description" content="La página que buscás no existe. Volvé al portfolio de Matías González.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#233245">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preload" href="/assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/tiles.css">
+  <link rel="stylesheet" href="/css/content.css">
+  <link rel="stylesheet" href="/css/caso.css">
+  <script>
+    document.documentElement.classList.add('js');
+    /* Al cargar: el logo se escribe sobre una pantalla marino. Si se llegó desde otra página del sitio, esa pantalla ya viene completa. */
+    try {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var c = document.documentElement.classList;
+        c.add('pt-arriving');
+        if (sessionStorage.getItem('pt-wipe')) c.add('pt-wipe');
+      }
+      sessionStorage.removeItem('pt-wipe');
+    } catch (e) {}
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body class="page-caso">
+  <div class="pt" aria-hidden="true"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></div>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="nav is-solid" data-nav>
+    <div class="nav__bar">
+      <a class="nav__logo" href="/" aria-label="Matías González, ir al inicio"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
+      <nav class="nav__links" aria-label="Principal">
+        <ul>
+          <li><a href="/#skills">Skills</a></li>
+          <li><a href="/#proyectos">Proyectos</a></li>
+          <li><a href="/#experiencia">Experiencia</a></li>
+          <li><a href="/#sobre-mi">Sobre mí</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--light nav__cta" href="/#contacto">Contacto</a>
+      <button class="icon-btn icon-btn--plain" type="button" data-theme-toggle aria-pressed="false" aria-label="Cambiar entre tema claro y oscuro">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn icon-btn--plain nav__burger" type="button" data-menu-open aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu-movil" hidden role="dialog" aria-modal="true" aria-label="Menú">
+    <div class="menu__head">
+      <a class="nav__logo" href="/" data-menu-close aria-label="Matías González, ir al inicio"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
+      <button class="icon-btn" type="button" data-menu-close aria-label="Cerrar menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="menu__links" aria-label="Menú móvil">
+      <a href="/#skills" data-menu-close>Skills</a>
+      <a href="/#proyectos" data-menu-close>Proyectos</a>
+      <a href="/#experiencia" data-menu-close>Experiencia</a>
+      <a href="/#sobre-mi" data-menu-close>Sobre mí</a>
+    </nav>
+    <div class="menu__extra">
+      <a class="btn btn--primary" href="/#contacto" data-menu-close>Contacto</a>
+      <a href="/assets/Matias-Gonzalez-CV.pdf" download>Descargar CV →</a>
+    </div>
+  </div>
+
+  <main id="contenido">
+    <section class="nf" aria-labelledby="titulo-404" id="inicio">
+      <p class="nf__code" aria-hidden="true">404</p>
+      <h1 class="nf__title" id="titulo-404">Esta página no existe</h1>
+      <p class="nf__text">Puede que el enlace esté mal escrito o que la página se haya movido. Desde acá podés volver al inicio o ir directo a los proyectos.</p>
+      <div class="nf__btns">
+        <a class="btn btn--primary" href="/">Volver al inicio <span aria-hidden="true">→</span></a>
+        <a class="btn btn--outline" href="/#proyectos">Ver proyectos</a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="footer" data-footer>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__call">
+          <p class="footer__over">¿Trabajamos juntos?</p>
+          <p class="footer__lead">Hablemos de tu <span class="mark">negocio.</span></p>
+          <a class="btn btn--primary" href="/#contacto" data-goto-form>Escribime
+            <span class="btn__arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+
+        <div class="footer__right">
+          <div class="footer__about">
+            <p class="footer__colt">Quién soy</p>
+            <p class="footer__bio">Desarrollo web y diseño UX/UI para que tu negocio sea más simple. Estudiante de Lic. en Sistemas, autodidacta y emprendedor.</p>
+            <p class="footer__where">Concepción del Uruguay, Entre Ríos · Argentina</p>
+            <p class="footer__avail"><span class="tl__pulse" aria-hidden="true"></span>Disponible para proyectos</p>
+          </div>
+
+          <div class="footer__cols">
+            <nav aria-label="Navegación del pie de página">
+              <p class="footer__colt">Navegación</p>
+              <ul>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#proyectos">Proyectos</a></li>
+                <li><a href="/#experiencia">Experiencia</a></li>
+                <li><a href="/#sobre-mi">Sobre mí</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+              </ul>
+            </nav>
+            <div>
+              <p class="footer__colt">Redes</p>
+              <ul>
+                <li><a href="https://github.com/matiasadriangonzalez" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="https://www.linkedin.com/in/mat%C3%ADas-gonz%C3%A1lez-69366821a/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="https://www.instagram.com/matigonzalez1_/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="https://wa.me/543442670050" target="_blank" rel="noopener">WhatsApp <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="mailto:matiasadriangonzalez23@gmail.com">Email <span aria-hidden="true">↗</span></a></li>
+                <li><a href="/assets/Matias-Gonzalez-CV.pdf" download>Descargar CV <span aria-hidden="true">↓</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="footer__legal">
+        <p>© 2026 Matías Adrián González</p>
+        <p>Hecho con HTML, CSS y JavaScript</p>
+        <a class="footer__up" href="#inicio" aria-label="Volver arriba" title="Volver arriba"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab is-visible" href="https://wa.me/543442670050" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp (se abre en una pestaña nueva)" data-fab>
+    <svg class="avatar" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <rect class="avatar__bg" width="120" height="120"/>
+      <path d="M6 126C8 98 28 92 48 90H72C92 92 112 98 114 126Z" fill="#1B2634"/>
+      <g class="avatar__head">
+        <path d="M50 76H70V92L60 101L50 92Z" fill="#E2AE8C"/>
+        <path d="M46 90L60 103L52 91Z M74 90L60 103L68 91Z" fill="#1B2634"/>
+        <circle cx="34" cy="62" r="5" fill="#E8B796"/>
+        <circle cx="86" cy="62" r="5" fill="#E8B796"/>
+        <ellipse cx="60" cy="58" rx="25.5" ry="29" fill="#EDBE9E"/>
+        <path d="M33 58C26 30 44 19 62 20C84 21 96 36 87 59C85 47 79 41 67 39C57 45 45 43 39 38C36 44 34 51 33 58Z" fill="#33241D"/>
+        <path d="M44 47Q50 43.5 56 46M64 46Q70 43.5 76 47" stroke="#33241D" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <g class="avatar__eyes">
+          <ellipse cx="50" cy="56" rx="5.6" ry="5" fill="#fff"/>
+          <ellipse cx="70" cy="56" rx="5.6" ry="5" fill="#fff"/>
+          <circle class="avatar__pupil" cx="50" cy="56" r="2.9" fill="#3A2418"/>
+          <circle class="avatar__pupil" cx="70" cy="56" r="2.9" fill="#3A2418"/>
+        </g>
+        <path d="M60 58Q57.5 66 60.5 67.5" stroke="#C98F6E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M50.5 71Q60 80 69.5 71Q60 73.5 50.5 71Z" fill="#fff" stroke="#9A5B45" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M31 60C29 14 91 14 89 60" stroke="#626E84" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <rect x="25" y="53" width="12" height="22" rx="6" fill="#233245"/>
+        <rect x="83" y="53" width="12" height="22" rx="6" fill="#233245"/>
+        <path d="M30 73C29 89 44 91 54 85" stroke="#233245" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <circle cx="55" cy="84.5" r="3.4" fill="#233245"/>
+      </g>
+    </svg>
+  </a>
+  <p class="fab-bubble" aria-hidden="true" data-fab-bubble>¿Hablamos? Escribime</p>
+
+  <script src="/js/main.js" defer></script>
+  </body>
+</html>

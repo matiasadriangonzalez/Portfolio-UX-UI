@@ -6,6 +6,10 @@
   <title>Matías González · Desarrollo web y UX/UI para tu negocio</title>
   <meta name="description" content="Portfolio de Matías González: estudiante de Lic. en Sistemas, autodidacta y emprendedor. Desarrollo web y diseño UX/UI para que tu negocio sea más simple.">
   <meta name="theme-color" content="#233245">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
   <meta property="og:title" content="Matías González · Tu negocio, más simple">
@@ -13,9 +17,8 @@
   <meta property="og:image" content="assets/img/hero-desktop.webp">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap">
+  <link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -25,16 +28,26 @@
   <script>
     /* Aplica el tema guardado antes de pintar, para evitar el parpadeo */
     document.documentElement.classList.add('js');
+    /* Al cargar: el logo se escribe sobre una pantalla marino. Si se llegó desde otra página del sitio, esa pantalla ya viene completa. */
+    try {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var c = document.documentElement.classList;
+        c.add('pt-arriving');
+        if (sessionStorage.getItem('pt-wipe')) c.add('pt-wipe');
+      }
+      sessionStorage.removeItem('pt-wipe');
+    } catch (e) {}
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
 </head>
 <body>
+  <div class="pt" aria-hidden="true"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></div>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div id="nav-sentinel" aria-hidden="true"></div>
 
   <header class="nav" data-nav>
     <div class="nav__bar">
-      <a class="nav__logo" href="#inicio" aria-label="Matías González, ir al inicio">MG</a>
+      <a class="nav__logo" href="#inicio" aria-label="Matías González, ir al inicio"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
       <nav class="nav__links" aria-label="Principal">
         <ul>
           <li><a href="#skills">Skills</a></li>
@@ -55,7 +68,7 @@
 
   <div class="menu" id="menu-movil" hidden role="dialog" aria-modal="true" aria-label="Menú">
     <div class="menu__head">
-      <a class="nav__logo" href="#inicio" data-menu-close aria-label="Matías González, ir al inicio">MG</a>
+      <a class="nav__logo" href="#inicio" data-menu-close aria-label="Matías González, ir al inicio"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
       <button class="icon-btn" type="button" data-menu-close aria-label="Cerrar menú">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -477,15 +490,11 @@
         </div>
       </div>
 
-      <div class="footer__brandbox" aria-hidden="true">
-        <p class="footer__brand footer__brand--full">Matías González</p>
-        <p class="footer__brand footer__brand--short">MG</p>
-      </div>
 
       <div class="footer__legal">
         <p>© 2026 Matías Adrián González</p>
-        <p>Hecho con HTML, CSS y JavaScript · Diseñado en Figma</p>
-        <a class="footer__up" href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a>
+        <p>Hecho con HTML, CSS y JavaScript</p>
+        <a class="footer__up" href="#inicio" aria-label="Volver arriba" title="Volver arriba"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
       </div>
     </div>
   </footer>

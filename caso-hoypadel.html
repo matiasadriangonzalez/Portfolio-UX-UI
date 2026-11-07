@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HoyPadel · Caso de estudio · Matías González</title>
+  <meta name="description" content="Caso de estudio de HoyPadel: reservas de canchas de pádel para varios clubes, con pago online y confirmación por WhatsApp. Diseño y desarrollo full-stack.">
+  <meta name="theme-color" content="#233245">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="HoyPadel · Caso de estudio">
+  <meta property="og:description" content="Reservas de canchas de pádel para varios clubes, con pago online y confirmación por WhatsApp.">
+  <meta property="og:image" content="assets/img/hoypadel/landing.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/tiles.css">
+  <link rel="stylesheet" href="css/content.css">
+  <link rel="stylesheet" href="css/caso.css">
+  <script>
+    document.documentElement.classList.add('js');
+    /* Al cargar: el logo se escribe sobre una pantalla marino. Si se llegó desde otra página del sitio, esa pantalla ya viene completa. */
+    try {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var c = document.documentElement.classList;
+        c.add('pt-arriving');
+        if (sessionStorage.getItem('pt-wipe')) c.add('pt-wipe');
+      }
+      sessionStorage.removeItem('pt-wipe');
+    } catch (e) {}
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body class="page-caso">
+  <div class="pt" aria-hidden="true"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></div>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="nav is-solid" data-nav>
+    <div class="nav__bar">
+      <a class="nav__logo" href="index.html" aria-label="Matías González, ir al inicio"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
+      <nav class="nav__links" aria-label="Principal">
+        <ul>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#proyectos">Proyectos</a></li>
+          <li><a href="index.html#experiencia">Experiencia</a></li>
+          <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--light nav__cta" href="index.html#contacto">Contacto</a>
+      <button class="icon-btn icon-btn--plain" type="button" data-theme-toggle aria-pressed="false" aria-label="Cambiar entre tema claro y oscuro">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn icon-btn--plain nav__burger" type="button" data-menu-open aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu-movil" hidden role="dialog" aria-modal="true" aria-label="Menú">
+    <div class="menu__head">
+      <a class="nav__logo" href="index.html" data-menu-close aria-label="Matías González, ir al inicio"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
+      <button class="icon-btn" type="button" data-menu-close aria-label="Cerrar menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="menu__links" aria-label="Menú móvil">
+      <a href="index.html#skills" data-menu-close>Skills</a>
+      <a href="index.html#proyectos" data-menu-close>Proyectos</a>
+      <a href="index.html#experiencia" data-menu-close>Experiencia</a>
+      <a href="index.html#sobre-mi" data-menu-close>Sobre mí</a>
+    </nav>
+    <div class="menu__extra">
+      <a class="btn btn--primary" href="index.html#contacto" data-menu-close>Contacto</a>
+      <a href="assets/Matias-Gonzalez-CV.pdf" download>Descargar CV →</a>
+    </div>
+  </div>
+
+  <main id="contenido">
+    <article class="caso" id="inicio">
+      <section class="caso__hero" aria-labelledby="titulo-caso">
+        <div class="caso__head">
+          <p class="caso__meta">
+            <span class="caso__cat">Caso de estudio · Full-stack · 2026</span>
+            <span class="caso__state"><span class="caso__dot" aria-hidden="true"></span>Terminado, sin lanzar</span>
+          </p>
+          <h1 class="caso__title" id="titulo-caso">HoyPadel</h1>
+        </div>
+
+        <div class="caso__text">
+          <p class="caso__lead">Reservas de canchas de pádel para varios clubes, con pago online y confirmación por WhatsApp.</p>
+          <p class="caso__desc">Cada club tiene su landing y su panel: el jugador elige horario, paga la seña con Mercado Pago y recibe el recordatorio por WhatsApp. Lo diseñé y programé de punta a punta.</p>
+          <ul class="caso__bullets">
+            <li>Landing pública por club, con horarios y precios</li>
+            <li>Pago de la seña con Mercado Pago; el turno se libera solo si no se paga</li>
+            <li>Confirmación y recordatorio por WhatsApp</li>
+            <li>Panel del club: calendario, canchas, horarios y bloqueos</li>
+            <li>Panel master para administrar todos los clubes</li>
+          </ul>
+          <dl class="caso__data">
+            <div><dt>Rol</dt><dd>Diseño y desarrollo full-stack</dd></div>
+            <div><dt>Año</dt><dd>2026</dd></div>
+            <div><dt>Stack</dt><dd>Next.js · FastAPI · PostgreSQL</dd></div>
+          </dl>
+          <a class="btn btn--outline caso__cta" href="index.html#contacto">Hablemos <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="stage">
+        <div class="windows" data-windows>
+          <figure class="win win--back">
+            <div class="win__bar" aria-hidden="true"><i></i><i></i><i></i><span>localhost:3000/panel</span></div>
+            <img fetchpriority="high" src="assets/img/hoypadel/dashboard.webp" width="1100" height="594" alt="Panel de gestión de HoyPadel con ingresos, turnos y accesos rápidos" decoding="async">
+          </figure>
+          <figure class="win win--front">
+            <div class="win__bar" aria-hidden="true"><i></i><i></i><i></i><span>localhost:3000</span></div>
+            <img fetchpriority="high" src="assets/img/hoypadel/landing.webp" width="1100" height="594" alt="Landing de HoyPadel: «Llevá la gestión de tu club al siguiente nivel»" decoding="async">
+          </figure>
+          <figure class="phone">
+            <img fetchpriority="high" src="assets/img/hoypadel/celular.webp" width="231" height="500" alt="Pantalla de reserva de HoyPadel en el celular, con el total y el pago de la seña" decoding="async">
+          </figure>
+        </div>
+        </div>
+      </section>
+
+      <section class="story" aria-label="Historia del proyecto">
+        <div class="story__row" data-reveal>
+          <h2 class="story__title"><span class="story__n">01</span>Problema</h2>
+          <div class="story__body"><p>Reservar una cancha por mensaje obliga a un ida y vuelta de respuestas, deja horarios pisados y turnos que se pierden o quedan sin pagar. Quise un sistema donde el jugador elija, pague y reciba la confirmación sin intermediarios.</p></div>
+        </div>
+        <div class="story__row" data-reveal>
+          <h2 class="story__title"><span class="story__n">02</span>Proceso</h2>
+          <div class="story__body">
+            <p>Modelé clubes, canchas, horarios y reservas. Armé la API en FastAPI con PostgreSQL y el frontend en Next.js, e integré Mercado Pago y WhatsApp.</p>
+            <p>Lo hice sin un proceso formal: fui resolviendo sobre la marcha.</p>
+          </div>
+        </div>
+        <div class="story__row" data-reveal>
+          <h2 class="story__title"><span class="story__n">03</span>Solución</h2>
+          <div class="story__body">
+            <ul class="story__list">
+              <li>Landing pública por club, con horarios y precios.</li>
+              <li>Pago de la seña con Mercado Pago; si no se paga en 15 minutos, el turno se libera solo.</li>
+              <li>Confirmación y recordatorio por WhatsApp.</li>
+              <li>Panel del club: calendario, bloqueos y torneos.</li>
+              <li>Panel master para administrar todos los clubes.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="story__row" data-reveal>
+          <h2 class="story__title"><span class="story__n">04</span>Resultado y aprendizaje</h2>
+          <div class="story__body">
+            <p>La app funciona de punta a punta, pero no la lancé: no tenía cómo sostener el costo de mantenerla.</p>
+            <p>Lo más flojo quedó en las cuentas de usuario, justo lo que no investigué ni validé antes. Hoy hago al revés: primero entiendo al usuario, pruebo con gente real y recién después construyo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="shots" aria-labelledby="t-capturas">
+        <div class="shots__head">
+          <h2 class="shots__title" id="t-capturas">Capturas</h2>
+          <div class="shots__nav">
+            <button class="icon-btn shots__btn" type="button" data-shots-prev aria-label="Capturas anteriores"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button class="icon-btn shots__btn" type="button" data-shots-next aria-label="Capturas siguientes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <ul class="shots__track" tabindex="0" aria-label="Capturas de HoyPadel; se desplazan con las flechas del teclado" data-shots>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/landing.webp" width="1100" height="594" alt="Landing del producto de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Landing del producto</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/horario.webp" width="1100" height="594" alt="Reserva · Elegir horario de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Reserva · Elegir horario</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/pago.webp" width="1100" height="594" alt="Reserva · Datos y pago de la seña de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Reserva · Datos y pago de la seña</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/dashboard.webp" width="1100" height="594" alt="Panel · Dashboard de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Panel · Dashboard</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/calendario.webp" width="1100" height="594" alt="Panel · Calendario de turnos de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Panel · Calendario de turnos</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/canchas.webp" width="1100" height="594" alt="Panel · Canchas de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Panel · Canchas</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/horarios.webp" width="1100" height="594" alt="Panel · Horarios de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Panel · Horarios</figcaption>
+              </figure>
+            </li>
+            <li class="shot">
+              <figure>
+                <img src="assets/img/hoypadel/config.webp" width="1100" height="594" alt="Panel · Configuración del club de HoyPadel" loading="lazy" decoding="async">
+                <figcaption>Panel · Configuración del club</figcaption>
+              </figure>
+            </li>
+        </ul>
+        <p class="shots__hint">Datos de un club de prueba, inventados para esta demo.</p>
+      </section>
+
+      <section class="caso__cta-final" aria-labelledby="t-cta">
+        <h2 class="caso__cta-title" id="t-cta">¿Querés algo así para tu negocio?</h2>
+        <div class="caso__cta-btns">
+          <a class="btn btn--primary" href="index.html#contacto">Hablemos <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="index.html#proyectos"><span aria-hidden="true">←</span> Volver a proyectos</a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer" data-footer>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__call">
+          <p class="footer__over">¿Trabajamos juntos?</p>
+          <p class="footer__lead">Hablemos de tu <span class="mark">negocio.</span></p>
+          <a class="btn btn--primary" href="index.html#contacto" data-goto-form>Escribime
+            <span class="btn__arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+
+        <div class="footer__right">
+          <div class="footer__about">
+            <p class="footer__colt">Quién soy</p>
+            <p class="footer__bio">Desarrollo web y diseño UX/UI para que tu negocio sea más simple. Estudiante de Lic. en Sistemas, autodidacta y emprendedor.</p>
+            <p class="footer__where">Concepción del Uruguay, Entre Ríos · Argentina</p>
+            <p class="footer__avail"><span class="tl__pulse" aria-hidden="true"></span>Disponible para proyectos</p>
+          </div>
+
+          <div class="footer__cols">
+            <nav aria-label="Navegación del pie de página">
+              <p class="footer__colt">Navegación</p>
+              <ul>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#experiencia">Experiencia</a></li>
+                <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+              </ul>
+            </nav>
+            <div>
+              <p class="footer__colt">Redes</p>
+              <ul>
+                <li><a href="https://github.com/matiasadriangonzalez" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="https://www.linkedin.com/in/mat%C3%ADas-gonz%C3%A1lez-69366821a/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="https://www.instagram.com/matigonzalez1_/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="https://wa.me/543442670050" target="_blank" rel="noopener">WhatsApp <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+                <li><a href="mailto:matiasadriangonzalez23@gmail.com">Email <span aria-hidden="true">↗</span></a></li>
+                <li><a href="assets/Matias-Gonzalez-CV.pdf" download>Descargar CV <span aria-hidden="true">↓</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="footer__legal">
+        <p>© 2026 Matías Adrián González</p>
+        <p>Hecho con HTML, CSS y JavaScript</p>
+        <a class="footer__up" href="#inicio" aria-label="Volver arriba" title="Volver arriba"><svg class="logo-mark" viewBox="220 250 790 790" fill="none" stroke="currentColor" stroke-width="62" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M274 1013V380C274 330 310 300 350 300C365 300 380 308 395 320L660 526L860 320C875 308 890 300 905 300C942 300 978 330 978 380V1013"/><path pathLength="1" d="M660 526L735 585Q765 608 765 640Q765 678 720 678H540C480 678 460 715 460 770V905C460 955 495 985 540 985H700C745 985 770 955 770 905V808H572"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="fab is-visible" href="https://wa.me/543442670050" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp (se abre en una pestaña nueva)" data-fab>
+    <svg class="avatar" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <rect class="avatar__bg" width="120" height="120"/>
+      <path d="M6 126C8 98 28 92 48 90H72C92 92 112 98 114 126Z" fill="#1B2634"/>
+      <g class="avatar__head">
+        <path d="M50 76H70V92L60 101L50 92Z" fill="#E2AE8C"/>
+        <path d="M46 90L60 103L52 91Z M74 90L60 103L68 91Z" fill="#1B2634"/>
+        <circle cx="34" cy="62" r="5" fill="#E8B796"/>
+        <circle cx="86" cy="62" r="5" fill="#E8B796"/>
+        <ellipse cx="60" cy="58" rx="25.5" ry="29" fill="#EDBE9E"/>
+        <path d="M33 58C26 30 44 19 62 20C84 21 96 36 87 59C85 47 79 41 67 39C57 45 45 43 39 38C36 44 34 51 33 58Z" fill="#33241D"/>
+        <path d="M44 47Q50 43.5 56 46M64 46Q70 43.5 76 47" stroke="#33241D" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <g class="avatar__eyes">
+          <ellipse cx="50" cy="56" rx="5.6" ry="5" fill="#fff"/>
+          <ellipse cx="70" cy="56" rx="5.6" ry="5" fill="#fff"/>
+          <circle class="avatar__pupil" cx="50" cy="56" r="2.9" fill="#3A2418"/>
+          <circle class="avatar__pupil" cx="70" cy="56" r="2.9" fill="#3A2418"/>
+        </g>
+        <path d="M60 58Q57.5 66 60.5 67.5" stroke="#C98F6E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M50.5 71Q60 80 69.5 71Q60 73.5 50.5 71Z" fill="#fff" stroke="#9A5B45" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M31 60C29 14 91 14 89 60" stroke="#626E84" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <rect x="25" y="53" width="12" height="22" rx="6" fill="#233245"/>
+        <rect x="83" y="53" width="12" height="22" rx="6" fill="#233245"/>
+        <path d="M30 73C29 89 44 91 54 85" stroke="#233245" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <circle cx="55" cy="84.5" r="3.4" fill="#233245"/>
+      </g>
+    </svg>
+  </a>
+  <p class="fab-bubble" aria-hidden="true" data-fab-bubble>¿Hablamos? Escribime</p>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/caso.js" defer></script>
+</body>
+</html>
