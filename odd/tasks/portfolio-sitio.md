@@ -7,12 +7,14 @@
 
 ## Tareas
 - [x] **T1 Base:** tokens CSS (claro/oscuro), base, componentes (botón, píldora, marca, WhatsApp), navegación fija transparente→sólida, menú móvil, hero (desktop y móvil), flecha de scroll, tema claro/oscuro. _Verificado con capturas en 1440 y 375; sin errores de JS._
-- [ ] **T2 Skills y Proyectos:** tiles tipo bento con el abanico de capturas, efecto de inclinación hacia el cursor (solo `hover: hover`), imágenes WebP.
+- [x] **T2 Skills y Proyectos:** 4 baldosas de skills y 4 de proyectos (marino/piedra) con abanico de capturas WebP (12 imágenes, 200 KB), inclinación y brillo hacia el cursor (solo `hover: hover` y sin `prefers-reduced-motion`), abanico que se abre también con foco de teclado. _Verificado con capturas en 1440 y 375, tema claro y oscuro, y hover; sin errores de JS ni overflow. El enlace de HoyPadel apunta a `caso-hoypadel.html` (T4, todavía no existe)._
 - [ ] **T3 Métricas, Experiencia, Sobre mí, Contacto y Footer:** timeline, acordeón accesible, formulario con botón de envío, footer pegado abajo con el nombre grande.
 - [ ] **T4 Caso HoyPadel (`caso-hoypadel.html`) y `404.html`:** encabezado con ventanas y celular (hover que las separa), Problema/Proceso/Solución/Resultado, carrusel con scroll-snap.
 - [ ] **T5 Animaciones:** scroll reveals suaves, rebote de la flecha, `prefers-reduced-motion`.
 - [ ] **T6 SEO, accesibilidad y rendimiento:** meta/OG con URL final, favicon, fuentes autoalojadas, WebP, `aria-*`, contraste, Lighthouse ≥ 90 ×4.
 - [ ] **T7 Deploy:** plataforma con auto-deploy desde `main`, HTTPS, captura de Lighthouse sobre la URL de producción.
+
+- [x] **T2b Ajustes pedidos por el autor:** capturas de Coffea y Cubrí rehechas en 1440×900 sin el cartel de Netlify; botones "imán" (`.btn` se corre hasta 8 px hacia el cursor, solo con mouse y sin reducir movimiento); el botón de WhatsApp pasa a ser un avatar SVG con auriculares cuyas pupilas y cabeza siguen al cursor (parpadea, enlaza a `wa.me`). _Verificado: transform 8 px/0 al entrar/salir, pupilas a izquierda y derecha, sin errores de JS._
 
 ## Decisiones técnicas
 - CSS puro con variables (espejo de los tokens de Figma), sin Tailwind: menos dependencias y mejor puntaje.
@@ -25,6 +27,6 @@
 - Pendiente: Lighthouse móvil, axe/contraste, prueba con teclado y lector de pantalla.
 
 ## Próximo paso
-T2: sección Skills (bento) y Proyectos con los tiles y las capturas reales ya preparadas.
+T3: Métricas, Experiencia y formación, Sobre mí, Contacto (con botón de envío) y Footer.
 
 _Espejo en Engram (`odd/portfolio-sitio/tasks`): pendiente; el guardado falló por el registro de sesión. El archivo local es la fuente._

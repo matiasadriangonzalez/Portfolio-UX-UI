@@ -132,8 +132,9 @@
   z-index: 40;
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  width: 68px;
+  height: 68px;
+  overflow: hidden;
   border-radius: 50%;
   background: var(--lino);
   color: var(--marino);
@@ -156,9 +157,111 @@
   }
 }
 
+/* Globo de texto junto al avatar: aparece unos segundos la primera vez y al pasar el mouse o enfocar */
+.fab-bubble {
+  position: fixed;
+  right: calc(var(--s-5) + 68px + var(--s-3));
+  bottom: calc(var(--s-7) + 34px);
+  z-index: 40;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-2);
+  background: var(--crema);
+  color: var(--marino);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgb(26 38 64 / 0.22);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(8px, 50%);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+  pointer-events: none;
+}
+
+/* Colita que apunta al avatar */
+.fab-bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  width: 12px;
+  height: 12px;
+  background: inherit;
+  border-radius: 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.fab.is-visible ~ .fab-bubble.is-shown,
+.fab.is-visible:hover ~ .fab-bubble,
+.fab.is-visible:focus-visible ~ .fab-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 50%);
+}
+
+@media (max-width: 767px) {
+  .fab-bubble {
+    right: calc(var(--s-4) + 60px + var(--s-3));
+    bottom: calc(72px + 30px);
+  }
+}
+
+/* Avatar del botón: la cabeza y las pupilas siguen al cursor (variables que escribe main.js) */
+.avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar__bg {
+  fill: var(--lino);
+}
+
+.avatar__head {
+  transform: translate(var(--hx, 0px), var(--hy, 0px));
+  transition: transform 0.18s var(--ease);
+}
+
+.avatar__pupil {
+  transform: translate(var(--ex, 0px), var(--ey, 0px));
+  transition: transform 0.12s var(--ease);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .avatar__eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: blink 6s infinite;
+  }
+}
+
+@keyframes blink {
+  0%,
+  94%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  97% {
+    transform: scaleY(0.1);
+  }
+}
+
 @media (max-width: 767px) {
   .fab {
     right: var(--s-4);
     bottom: 72px;
+    width: 60px;
+    height: 60px;
   }
+}
+
+/* Botones "imán": se acercan un poco al cursor (variables --mx / --my de main.js) */
+.btn {
+  transform: translate(var(--mx, 0px), var(--my, 0px));
+}
+
+.btn:active {
+  transform: translate(var(--mx, 0px), var(--my, 0px)) scale(0.98);
 }

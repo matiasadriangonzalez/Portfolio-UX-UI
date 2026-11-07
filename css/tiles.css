@@ -1,0 +1,340 @@
+/* Skills y Proyectos: baldosas tipo bento (marino y piedra alternados). */
+
+.section__inner {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.section__lead {
+  max-width: 52ch;
+  margin-top: var(--s-3);
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+/* ---------- Skills ---------- */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--s-5);
+  margin-top: var(--s-7);
+}
+
+.skill {
+  grid-column: span 12;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  border-radius: var(--r-4);
+}
+
+.skill--a {
+  background: var(--tile-a-bg);
+  color: var(--tile-a-fg);
+  --muted-in-tile: var(--tile-a-muted);
+}
+
+.skill--b {
+  background: var(--tile-b-bg);
+  color: var(--tile-b-fg);
+  --muted-in-tile: var(--tile-b-muted);
+}
+
+.skill__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.skill__desc {
+  max-width: 40ch;
+  color: var(--muted-in-tile);
+  line-height: 1.55;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: auto;
+  padding-top: var(--s-4);
+}
+
+.chips li {
+  padding: 6px 14px;
+  border: 1px solid currentColor;
+  border-radius: var(--r-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  /* el borde usa el color del texto pero más suave */
+  border-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
+@media (min-width: 900px) {
+  .skill {
+    min-height: 240px;
+  }
+
+  .skill:nth-child(1),
+  .skill:nth-child(4) {
+    grid-column: span 7;
+  }
+
+  .skill:nth-child(2),
+  .skill:nth-child(3) {
+    grid-column: span 5;
+  }
+}
+
+/* ---------- Proyectos ---------- */
+.tiles {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-7);
+}
+
+@media (min-width: 900px) {
+  .tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tile {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-6) var(--s-6) var(--s-5);
+  border-radius: var(--r-4);
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s var(--ease);
+  will-change: transform;
+}
+
+.tile--a {
+  background: var(--tile-a-bg);
+  color: var(--tile-a-fg);
+  --muted-in-tile: var(--tile-a-muted);
+  --glow: rgb(240 237 231 / 0.16);
+}
+
+.tile--b {
+  background: var(--tile-b-bg);
+  color: var(--tile-b-fg);
+  --muted-in-tile: var(--tile-b-muted);
+  --glow: rgb(255 255 255 / 0.55);
+}
+
+/* Brillo radial que sigue al cursor (variables --gx / --gy que escribe main.js) */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 30%), var(--glow), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.tile__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tile__sub {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+  color: var(--muted-in-tile);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tile__sub::before,
+.tile__sub::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* Abanico de capturas: la del medio al frente y dos detrás, inclinadas */
+.fan {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  margin: var(--s-6) auto var(--s-5);
+}
+
+.fan__img {
+  position: absolute;
+  top: 50%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--r-3);
+  box-shadow: 0 16px 36px rgb(0 0 0 / 0.28);
+  transition: transform 0.5s var(--ease);
+}
+
+.fan__img--c {
+  left: 50%;
+  z-index: 2;
+  width: 66%;
+  transform: translate(-50%, -50%);
+}
+
+.fan__img--l {
+  left: 2%;
+  width: 52%;
+  transform: translateY(-50%) rotate(-7deg);
+}
+
+.fan__img--r {
+  right: 2%;
+  width: 52%;
+  transform: translateY(-50%) rotate(7deg);
+}
+
+.tile__desc {
+  line-height: 1.55;
+}
+
+.tile__result {
+  margin-top: var(--s-3);
+  color: var(--muted-in-tile);
+  line-height: 1.55;
+}
+
+.tile__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-4);
+  margin-top: auto;
+  padding-top: var(--s-5);
+}
+
+.tile__tags {
+  color: var(--muted-in-tile);
+  font-size: 0.875rem;
+}
+
+.tile__link {
+  font-weight: 600;
+  white-space: nowrap;
+  text-underline-offset: 4px;
+}
+
+/* Toda la baldosa es el enlace (un solo destino por proyecto) */
+.tile__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.tile__link:focus-visible {
+  outline: none;
+}
+
+.tile:has(.tile__link:focus-visible) {
+  outline: 3px solid var(--tile-ring, currentColor);
+  outline-offset: 4px;
+}
+
+/* Efectos con puntero: brillo, abanico que se abre y subrayado del enlace */
+@media (hover: hover) {
+  .tile:hover::before {
+    opacity: 1;
+  }
+
+  .tile:hover .tile__link {
+    text-decoration: underline;
+  }
+}
+
+/* Con teclado: el brillo y el abanico también se activan al enfocar */
+.tile:has(.tile__link:focus-visible)::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) {
+    .tile:hover .fan__img--l {
+      transform: translate(-6%, -50%) rotate(-12deg);
+    }
+
+    .tile:hover .fan__img--r {
+      transform: translate(6%, -50%) rotate(12deg);
+    }
+  }
+
+  .tile:has(.tile__link:focus-visible) .fan__img--l {
+    transform: translate(-6%, -50%) rotate(-12deg);
+  }
+
+  .tile:has(.tile__link:focus-visible) .fan__img--r {
+    transform: translate(6%, -50%) rotate(12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .skill {
+    padding: var(--s-5);
+  }
+
+  .tile {
+    padding: var(--s-5) var(--s-5) var(--s-5);
+  }
+
+  .tile__sub {
+    gap: var(--s-3);
+    font-size: 0.6875rem;
+  }
+
+  .fan {
+    aspect-ratio: 1.75 / 1;
+    margin-block: var(--s-5) var(--s-4);
+  }
+
+  .fan__img--c {
+    width: 74%;
+  }
+
+  .fan__img--l,
+  .fan__img--r {
+    width: 56%;
+  }
+
+  .fan__img--l {
+    left: 0;
+  }
+
+  .fan__img--r {
+    right: 0;
+  }
+}

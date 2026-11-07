@@ -40,7 +40,18 @@
     const quiet = [document.getElementById('contacto'), document.querySelector('[data-footer]')].filter(Boolean);
     let pastHero = false;
     let inQuiet = 0;
-    const update = () => fab.classList.toggle('is-visible', pastHero && inQuiet === 0);
+    const bubble = document.querySelector('[data-fab-bubble]');
+    let bubbleDone = false;
+    const update = () => {
+      const visible = pastHero && inQuiet === 0;
+      fab.classList.toggle('is-visible', visible);
+      /* El globo se muestra una sola vez por visita: aparece al salir del hero y se retira a los 6 s */
+      if (visible && bubble && !bubbleDone) {
+        bubbleDone = true;
+        setTimeout(() => bubble.classList.add('is-shown'), 700);
+        setTimeout(() => bubble.classList.remove('is-shown'), 6700);
+      }
+    };
     if (hero) new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }, { rootMargin: '-40% 0px 0px 0px' }).observe(hero);
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { inQuiet += e.isIntersecting ? 1 : -1; });
@@ -48,6 +59,73 @@
       update();
     });
     quiet.forEach((el) => io.observe(el));
+  }
+
+  /* Baldosas de proyecto: inclinación hacia el cursor y brillo que lo sigue.
+     Solo con puntero real (hover: hover) y sin prefers-reduced-motion. */
+  const canTilt = window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)');
+  if (canTilt.matches) {
+    const MAX = 5; // grados
+    document.querySelectorAll('[data-tilt]').forEach((tile) => {
+      tile.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const r = tile.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        tile.style.setProperty('--ry', `${((x - 0.5) * 2 * MAX).toFixed(2)}deg`);
+        tile.style.setProperty('--rx', `${((0.5 - y) * 2 * MAX).toFixed(2)}deg`);
+        tile.style.setProperty('--gx', `${(x * 100).toFixed(1)}%`);
+        tile.style.setProperty('--gy', `${(y * 100).toFixed(1)}%`);
+      });
+      tile.addEventListener('pointerleave', () => {
+        tile.style.removeProperty('--rx');
+        tile.style.removeProperty('--ry');
+      });
+    });
+  }
+
+  /* Botones "imán": se desplazan unos píxeles hacia el cursor mientras está encima */
+  if (canTilt.matches) {
+    const PULL = 0.22;
+    const LIMIT = 8; // px
+    const clamp = (v) => Math.max(-LIMIT, Math.min(LIMIT, v));
+    document.querySelectorAll('.btn').forEach((btn) => {
+      btn.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const r = btn.getBoundingClientRect();
+        btn.style.setProperty('--mx', `${clamp((e.clientX - (r.left + r.width / 2)) * PULL).toFixed(1)}px`);
+        btn.style.setProperty('--my', `${clamp((e.clientY - (r.top + r.height / 2)) * PULL).toFixed(1)}px`);
+      });
+      btn.addEventListener('pointerleave', () => {
+        btn.style.removeProperty('--mx');
+        btn.style.removeProperty('--my');
+      });
+    });
+  }
+
+  /* Avatar del botón de WhatsApp: mira hacia donde está el cursor (solo con puntero y sin reducir movimiento) */
+  if (fab && canTilt.matches) {
+    let raf = 0;
+    let last = null;
+    const look = () => {
+      raf = 0;
+      const r = fab.getBoundingClientRect();
+      const vx = last.x - (r.left + r.width / 2);
+      const vy = last.y - (r.top + r.height / 2);
+      const dist = Math.hypot(vx, vy) || 1;
+      const k = Math.min(dist / 220, 1); // cerca del botón mira con más fuerza
+      const ux = (vx / dist) * k;
+      const uy = (vy / dist) * k;
+      fab.style.setProperty('--ex', `${(ux * 2.4).toFixed(2)}px`);
+      fab.style.setProperty('--ey', `${(uy * 1.8).toFixed(2)}px`);
+      fab.style.setProperty('--hx', `${(ux * 2.2).toFixed(2)}px`);
+      fab.style.setProperty('--hy', `${(uy * 1.4).toFixed(2)}px`);
+    };
+    document.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse' || !fab.classList.contains('is-visible')) return;
+      last = { x: e.clientX, y: e.clientY };
+      if (!raf) raf = requestAnimationFrame(look);
+    }, { passive: true });
   }
 
   /* La flecha del hero deja de moverse tras el primer scroll */

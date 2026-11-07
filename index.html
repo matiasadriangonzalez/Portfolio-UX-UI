@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/tiles.css">
   <script>
     /* Aplica el tema guardado antes de pintar, para evitar el parpadeo */
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -106,14 +107,115 @@
       </a>
     </section>
 
-    <!-- Secciones pendientes (tareas T2 a T4 de odd/tasks/portfolio-sitio.md) -->
     <section class="section" id="skills" aria-labelledby="t-skills">
-      <h2 class="section__title" id="t-skills">Skills</h2>
-      <p class="section__todo">En construcción.</p>
+      <div class="section__inner">
+        <h2 class="section__title" id="t-skills">Skills</h2>
+        <p class="section__lead">Lo que uso para llevar un negocio de la idea a la web.</p>
+
+        <div class="bento">
+          <article class="skill skill--a">
+            <h3 class="skill__title">Diseño UX/UI</h3>
+            <p class="skill__desc">Investigo, bocetos, prototipo y valido con personas reales antes de escribir código.</p>
+            <ul class="chips" aria-label="Herramientas y métodos de diseño">
+              <li>Figma</li><li>Wireframes</li><li>Design system</li><li>Prototipado</li><li>Test de usabilidad</li>
+            </ul>
+          </article>
+          <article class="skill skill--b">
+            <h3 class="skill__title">Front-end</h3>
+            <p class="skill__desc">Interfaces accesibles y responsive.</p>
+            <ul class="chips" aria-label="Tecnologías front-end">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Next.js</li>
+            </ul>
+          </article>
+          <article class="skill skill--b">
+            <h3 class="skill__title">Back-end</h3>
+            <p class="skill__desc">APIs y datos para que la app funcione de verdad.</p>
+            <ul class="chips" aria-label="Tecnologías back-end">
+              <li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>APIs REST</li>
+            </ul>
+          </article>
+          <article class="skill skill--a">
+            <h3 class="skill__title">Herramientas e integraciones</h3>
+            <p class="skill__desc">Control de versiones y servicios de terceros para cobrar y avisar.</p>
+            <ul class="chips" aria-label="Herramientas e integraciones">
+              <li>Git</li><li>GitHub</li><li>Mercado Pago</li><li>WhatsApp (Twilio)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
+
     <section class="section" id="proyectos" aria-labelledby="t-proyectos">
-      <h2 class="section__title" id="t-proyectos">Proyectos</h2>
-      <p class="section__todo">En construcción.</p>
+      <div class="section__inner">
+        <h2 class="section__title" id="t-proyectos">Proyectos</h2>
+        <p class="section__lead">Un caso de estudio completo y tres trabajos más. Tocá un proyecto para verlo.</p>
+
+        <div class="tiles">
+          <article class="tile tile--a" data-tilt>
+            <h3 class="tile__title">HoyPadel</h3>
+            <p class="tile__sub"><span>Caso de estudio · Proyecto propio</span></p>
+            <div class="fan">
+              <img class="fan__img fan__img--l" src="assets/img/proyectos/hoypadel-1.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--r" src="assets/img/proyectos/hoypadel-3.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--c" src="assets/img/proyectos/hoypadel-2.webp" width="720" height="450" alt="Landing de HoyPadel con el mensaje «Llevá la gestión de tu club al siguiente nivel»" loading="lazy" decoding="async">
+            </div>
+            <p class="tile__desc">App de reservas para clubes de pádel: el jugador elige horario y paga la seña; el club gestiona turnos, canchas y horarios.</p>
+            <p class="tile__result">Resultado: reserva con seña online y panel de gestión para cada club.</p>
+            <div class="tile__foot">
+              <p class="tile__tags">Next.js · FastAPI · PostgreSQL</p>
+              <a class="tile__link" href="caso-hoypadel.html">Ver caso de estudio <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="tile tile--b" data-tilt>
+            <h3 class="tile__title">OpenArt</h3>
+            <p class="tile__sub"><span>Prototipo · Trabajo académico UADER</span></p>
+            <div class="fan">
+              <img class="fan__img fan__img--l" src="assets/img/proyectos/openart-1.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--r" src="assets/img/proyectos/openart-3.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--c" src="assets/img/proyectos/openart-2.webp" width="720" height="450" alt="Inicio del marketplace OpenArt con obras destacadas" loading="lazy" decoding="async">
+            </div>
+            <p class="tile__desc">Marketplace de arte digital con 9 pantallas, carrito y perfiles.</p>
+            <p class="tile__result">Resultado: prototipo navegable en Figma Make.</p>
+            <div class="tile__foot">
+              <p class="tile__tags">Figma · React · UX</p>
+              <a class="tile__link" href="https://www.figma.com/make/YLGpsJolgT38wdEHEGE7cG/Demo?fullscreen=1" target="_blank" rel="noopener">Ver prototipo <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+            </div>
+          </article>
+
+          <article class="tile tile--b" data-tilt>
+            <h3 class="tile__title">Coffea</h3>
+            <p class="tile__sub"><span>Sitio web · Trabajo académico UADER</span></p>
+            <div class="fan">
+              <img class="fan__img fan__img--l" src="assets/img/proyectos/coffea-2.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--r" src="assets/img/proyectos/coffea-3.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--c" src="assets/img/proyectos/coffea-1.webp" width="720" height="450" alt="Inicio de la landing de Coffea: «Servimos el café más rico de la ciudad»" loading="lazy" decoding="async">
+            </div>
+            <p class="tile__desc">Landing de una cafetería: carta de cafés y postres, y pedido en un clic.</p>
+            <p class="tile__result">Resultado: sitio publicado en Netlify.</p>
+            <div class="tile__foot">
+              <p class="tile__tags">HTML · CSS · Netlify</p>
+              <a class="tile__link" href="https://coffean.netlify.app/" target="_blank" rel="noopener">Ver sitio <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+            </div>
+          </article>
+
+          <article class="tile tile--a" data-tilt>
+            <h3 class="tile__title">Cubrí Seguros</h3>
+            <p class="tile__sub"><span>Sitio web · Trabajo académico UADER</span></p>
+            <div class="fan">
+              <img class="fan__img fan__img--l" src="assets/img/proyectos/cubri-2.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--r" src="assets/img/proyectos/cubri-3.webp" width="720" height="450" alt="" loading="lazy" decoding="async">
+              <img class="fan__img fan__img--c" src="assets/img/proyectos/cubri-1.webp" width="720" height="450" alt="Inicio de Cubrí Seguros: «Protegé lo que más usás en menos de 3 minutos» y los seguros disponibles" loading="lazy" decoding="async">
+            </div>
+            <p class="tile__desc">Contratación digital de seguros: elegís qué asegurar y cotizás al instante.</p>
+            <p class="tile__result">Resultado: sitio publicado en Netlify.</p>
+            <div class="tile__foot">
+              <p class="tile__tags">HTML · CSS · Netlify</p>
+              <a class="tile__link" href="https://cubri-seguros.netlify.app/" target="_blank" rel="noopener">Ver sitio <span aria-hidden="true">↗</span><span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
     <section class="section" id="metricas" aria-labelledby="t-metricas">
       <h2 class="section__title" id="t-metricas">Métricas</h2>
@@ -138,8 +240,34 @@
   </footer>
 
   <a class="fab" href="https://wa.me/543442670050" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp (se abre en una pestaña nueva)" data-fab>
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.1L2 22l5.05-1.6A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.2-3 .95.98-2.92-.2-.3a8.1 8.1 0 0 1 6.72-12.53zm-3.3 4.1c-.2 0-.5.07-.77.37-.26.3-1 1-1 2.45s1.07 2.85 1.22 3.05c.15.2 2.1 3.2 5.1 4.5 2.5 1.05 3 .85 3.55.8.55-.05 1.75-.72 2-1.4.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35-.3-.15-1.75-.87-2.02-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.65-1.62-.9-2.2-.23-.57-.47-.5-.67-.5z"/></svg>
+    <svg class="avatar" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <rect class="avatar__bg" width="120" height="120"/>
+      <path d="M6 126C8 98 28 92 48 90H72C92 92 112 98 114 126Z" fill="#1B2634"/>
+      <g class="avatar__head">
+        <path d="M50 76H70V92L60 101L50 92Z" fill="#E2AE8C"/>
+        <path d="M46 90L60 103L52 91Z M74 90L60 103L68 91Z" fill="#1B2634"/>
+        <circle cx="34" cy="62" r="5" fill="#E8B796"/>
+        <circle cx="86" cy="62" r="5" fill="#E8B796"/>
+        <ellipse cx="60" cy="58" rx="25.5" ry="29" fill="#EDBE9E"/>
+        <path d="M33 58C26 30 44 19 62 20C84 21 96 36 87 59C85 47 79 41 67 39C57 45 45 43 39 38C36 44 34 51 33 58Z" fill="#33241D"/>
+        <path d="M44 47Q50 43.5 56 46M64 46Q70 43.5 76 47" stroke="#33241D" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <g class="avatar__eyes">
+          <ellipse cx="50" cy="56" rx="5.6" ry="5" fill="#fff"/>
+          <ellipse cx="70" cy="56" rx="5.6" ry="5" fill="#fff"/>
+          <circle class="avatar__pupil" cx="50" cy="56" r="2.9" fill="#3A2418"/>
+          <circle class="avatar__pupil" cx="70" cy="56" r="2.9" fill="#3A2418"/>
+        </g>
+        <path d="M60 58Q57.5 66 60.5 67.5" stroke="#C98F6E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M50.5 71Q60 80 69.5 71Q60 73.5 50.5 71Z" fill="#fff" stroke="#9A5B45" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M31 60C29 14 91 14 89 60" stroke="#626E84" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <rect x="25" y="53" width="12" height="22" rx="6" fill="#233245"/>
+        <rect x="83" y="53" width="12" height="22" rx="6" fill="#233245"/>
+        <path d="M30 73C29 89 44 91 54 85" stroke="#233245" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <circle cx="55" cy="84.5" r="3.4" fill="#233245"/>
+      </g>
+    </svg>
   </a>
+  <p class="fab-bubble" aria-hidden="true" data-fab-bubble>¿Hablamos? Escribime</p>
 
   <script src="js/main.js" defer></script>
 </body>

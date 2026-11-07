@@ -18,6 +18,14 @@
   --on-dark: var(--crema);
   --on-dark-muted: #b9c1cf;
 
+  /* Baldosas (skills y proyectos): "a" oscura, "b" clara en tema claro */
+  --tile-a-bg: var(--marino);
+  --tile-a-fg: var(--crema);
+  --tile-a-muted: #b9c1cf;
+  --tile-b-bg: var(--piedra);
+  --tile-b-fg: var(--marino);
+  --tile-b-muted: #4a5568; /* más de 5:1 sobre piedra */
+
   /* Tipografía */
   --font-display: "Archivo Black", "Arial Black", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -52,6 +60,9 @@
   --muted: #b2bac8;
   --tile-alt: #2a394d;
   --line: rgb(240 237 231 / 0.18);
+  --tile-b-bg: #2a394d;
+  --tile-b-fg: var(--crema);
+  --tile-b-muted: #b9c1cf;
 }
 
 @media (max-width: 767px) {
