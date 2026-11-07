@@ -120,21 +120,18 @@
     font-size: 1.125rem;
   }
 
+  .skill {
+    grid-column: span 6;
+  }
+}
+
+/* Con ancho de sobra: filas de una tarjeta ancha y una angosta (860 / 428 px a 1312 px) */
+@media (min-width: 1100px) {
   .skill--wide {
     grid-column: span 8;
   }
 
   .skill--narrow {
-    grid-column: span 4;
-  }
-
-  /* El grid de 12 columnas con 24 px de aire da 860 / 428 px a 1312 px de ancho */
-  .skill--wide {
-    grid-column: span 8;
-  }
-
-  .skill:nth-child(2),
-  .skill:nth-child(3) {
     grid-column: span 4;
   }
 }

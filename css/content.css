@@ -82,7 +82,7 @@ ol {
   line-height: 1.5;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1100px) {
   .metrics {
     grid-template-columns: repeat(4, 1fr);
     padding: 56px 0;
@@ -673,36 +673,11 @@ ol {
   }
 }
 
-/* Marca decorativa gigante, recortada por abajo como en el prototipo */
-.footer__brandbox {
-  height: 96px;
-  margin: var(--s-6) 0;
-  overflow: hidden;
-  border-top: 1px solid rgb(240 237 231 / 0.16);
-  padding-top: var(--s-6);
-  box-sizing: content-box;
-}
-
-.footer__brand {
-  color: rgb(240 237 231 / 0.1);
-  font-family: var(--font-display);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  text-align: center;
-  white-space: nowrap;
-  user-select: none;
-}
-
-.footer__brand--full {
-  display: none;
-}
-
-.footer__brand--short {
-  font-size: 150px;
-}
-
 .footer__legal {
   display: grid;
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid rgb(240 237 231 / 0.16);
   gap: var(--s-3);
   justify-items: start;
   color: rgb(240 237 231 / 0.8);
@@ -710,18 +685,21 @@ ol {
   line-height: 1.57;
 }
 
+/* "Volver arriba": el logo en un círculo; se escribe de nuevo al pasar el mouse */
 .footer__up {
   display: inline-flex;
   align-items: center;
-  gap: var(--s-1);
-  min-height: 43px;
-  padding: 0 20px;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   border: 1.5px solid var(--crema);
-  border-radius: var(--r-pill);
+  border-radius: 50%;
   color: var(--crema);
-  font-weight: 600;
-  line-height: 1;
   transition: background-color 0.25s var(--ease);
+}
+
+.footer__up .logo-mark {
+  height: 22px;
 }
 
 @media (hover: hover) {
@@ -767,33 +745,28 @@ ol {
     line-height: 1.45;
   }
 
-  .footer__brandbox {
-    height: 7.6cqw;
-    margin: 56px 0;
-    padding-top: 56px;
-  }
-
-  .footer__brand--full {
-    display: block;
-    margin-top: -2.06cqw;
-    font-size: 11.87cqw;
-  }
-
-  .footer__brand--short {
-    display: none;
-  }
-
   .footer__legal {
+    margin-top: 56px;
+    padding-top: 40px;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     justify-items: start;
   }
 
-  .footer__legal p:nth-child(2) {
+  .footer__legal p:nth-child(1) {
+    grid-column: 2;
+    grid-row: 1;
     justify-self: center;
   }
 
+  .footer__legal p:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .footer__up {
+    grid-column: 3;
+    grid-row: 1;
     justify-self: end;
   }
 }
@@ -985,18 +958,16 @@ ol {
   }
 }
 
-/* Que el avatar de WhatsApp (siempre visible) no tape el "Volver arriba" del footer */
-.footer__legal {
-  padding-right: 92px;
+/* Que el avatar de WhatsApp (siempre visible) no tape el logo de "Volver arriba" del footer */
+@media (min-width: 768px) {
+  .footer__up {
+    margin-right: 92px;
+  }
 }
 
 @media (max-width: 767px) {
   .footer__legal p {
     padding-right: 76px;
-  }
-
-  .footer__legal {
-    padding-right: 0;
   }
 }
 
@@ -1158,7 +1129,7 @@ ol {
   font-weight: 500;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .footer__top {
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) auto;
     gap: var(--s-7);
@@ -1169,7 +1140,7 @@ ol {
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1199px) {
   .footer__top {
     gap: var(--s-6);
   }
@@ -1182,7 +1153,7 @@ ol {
   gap: var(--s-6);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .footer__top {
     display: flex;
     align-items: flex-start;
@@ -1250,5 +1221,21 @@ ol {
 
   .field:has(textarea) textarea {
     height: 100%;
+  }
+}
+
+/* Footer en tablet: "Quién soy", Navegación y Redes en una fila bajo el llamado */
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer__right {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr;
+    gap: var(--s-6);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
   }
 }

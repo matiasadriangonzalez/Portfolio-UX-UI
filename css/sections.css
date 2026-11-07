@@ -27,14 +27,53 @@
   align-items: center;
   gap: var(--s-4);
   height: 100%;
-  padding-inline: var(--s-6);
+  padding-inline: var(--s-8) var(--s-6);
 }
 
 .nav__logo {
   font-family: var(--font-display);
   font-size: 1.75rem;
   line-height: 1;
-  transition: text-shadow 0.3s var(--ease);
+  transition: filter 0.3s var(--ease);
+}
+
+.logo-mark {
+  display: block;
+  width: auto;
+  height: 2.4rem;
+}
+
+/* Al pasar el mouse (o enfocar con teclado) el logo desaparece y se escribe de nuevo de una punta a la otra:
+   primero la M de corrido y, sin pausa, la G que sale del medio de la M */
+@keyframes logo-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.logo-mark path {
+  stroke-dasharray: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav__logo:hover .logo-mark path,
+  .nav__logo:focus-visible .logo-mark path,
+  .footer__up:hover .logo-mark path,
+  .footer__up:focus-visible .logo-mark path {
+    animation: logo-draw 1s cubic-bezier(0.4, 0.1, 0.6, 0.9) both;
+  }
+
+  .nav__logo:hover .logo-mark path + path,
+  .nav__logo:focus-visible .logo-mark path + path,
+  .footer__up:hover .logo-mark path + path,
+  .footer__up:focus-visible .logo-mark path + path {
+    animation-duration: 0.6s;
+    animation-delay: 1s;
+  }
 }
 
 .nav__links {
@@ -60,12 +99,19 @@
   }
 
   .nav__logo:hover {
-    text-shadow: 0 0 14px rgb(255 255 255 / 0.55), 0 0 4px rgb(255 255 255 / 0.35);
+    filter: drop-shadow(0 0 8px rgb(255 255 255 / 0.55));
   }
 }
 
 .nav__burger {
   display: none;
+}
+
+/* El logo arranca donde empieza el texto del hero ("Hola, soy"): mismo margen izquierdo que .hero__content */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .nav__bar {
+    padding-inline: var(--s-7) var(--s-6);
+  }
 }
 
 @media (max-width: 767px) {
@@ -434,5 +480,62 @@ section[id] {
   .section__title {
     font-size: 2.5rem;
     line-height: 1.15;
+  }
+}
+
+
+/* ---------- Hero en tablet (768–1099): el texto no pisa el retrato ---------- */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .hero__media {
+    width: 48%;
+  }
+
+  .hero__content {
+    width: 58%;
+    padding-inline: var(--s-7) var(--s-5);
+  }
+
+  .hero__headline {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .hero__desc {
+    max-width: 26ch;
+    font-size: 1.0625rem;
+  }
+
+  .hero__ctas .btn {
+    min-height: 44px;
+    padding-inline: var(--s-4);
+    font-size: 0.9375rem;
+  }
+
+  .hero__social .pill {
+    display: none;
+  }
+}
+
+/* ---------- Hero en celular: foto más baja y texto debajo, sin tapar el mate ---------- */
+@media (max-width: 767px) {
+  .hero__media {
+    height: clamp(400px, 60svh, 540px);
+  }
+
+  .hero__media img {
+    object-position: 58% 12%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+
+  .hero__hello {
+    margin-top: 4px;
+  }
+
+  .hero__name {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .scroll {
+    margin: var(--s-6) 0 var(--s-5);
   }
 }

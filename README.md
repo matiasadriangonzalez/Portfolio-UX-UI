@@ -16,7 +16,7 @@ Trabajo final de **Diseño UX-UI 2026** · Licenciatura en Sistemas de Informaci
 
 - HTML5 semántico + CSS3 (variables CSS para el design system) + JavaScript vanilla.
 - Sin frameworks JS ni constructores visuales, como pide la consigna.
-- _A confirmar:_ CSS puro o Tailwind compilado con CLI.
+- CSS puro en archivos por sección (`css/`), sin Tailwind, sin preprocesadores y sin paso de compilación: el sitio se sirve tal cual está en el repositorio.
 
 ## Proceso UX
 

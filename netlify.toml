@@ -1,0 +1,24 @@
+# Sitio estático: no hay comando de build, se publica la raíz del repositorio tal cual.
+[build]
+  publish = "."
+
+# Seguridad básica en todas las páginas
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Las fuentes no cambian: caché de un año
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Las imágenes se cachean una semana (si se reemplaza una con el mismo nombre, se actualiza sola)
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
