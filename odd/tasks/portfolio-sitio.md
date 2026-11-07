@@ -8,13 +8,23 @@
 ## Tareas
 - [x] **T1 Base:** tokens CSS (claro/oscuro), base, componentes (botón, píldora, marca, WhatsApp), navegación fija transparente→sólida, menú móvil, hero (desktop y móvil), flecha de scroll, tema claro/oscuro. _Verificado con capturas en 1440 y 375; sin errores de JS._
 - [x] **T2 Skills y Proyectos:** 4 baldosas de skills y 4 de proyectos (marino/piedra) con abanico de capturas WebP (12 imágenes, 200 KB), inclinación y brillo hacia el cursor (solo `hover: hover` y sin `prefers-reduced-motion`), abanico que se abre también con foco de teclado. _Verificado con capturas en 1440 y 375, tema claro y oscuro, y hover; sin errores de JS ni overflow. El enlace de HoyPadel apunta a `caso-hoypadel.html` (T4, todavía no existe)._
-- [ ] **T3 Métricas, Experiencia, Sobre mí, Contacto y Footer:** timeline, acordeón accesible, formulario con botón de envío, footer pegado abajo con el nombre grande.
+- [x] **T3 Métricas, Experiencia, Sobre mí, Contacto y Footer:** timeline, acordeón accesible, formulario con botón de envío, footer pegado abajo con el nombre grande. _Hecho y verificado con capturas en 1440 y 375 (sin overflow ni errores de JS); validación del formulario probada. Datos nuevos del autor: Concepción del Uruguay, EET N.º 1, inglés básico a intermedio, 21 años. Pendiente: emisores y años de los certificados (llegan en 24 h), y publicar en Netlify para que el formulario envíe de verdad (Netlify Forms)._
 - [ ] **T4 Caso HoyPadel (`caso-hoypadel.html`) y `404.html`:** encabezado con ventanas y celular (hover que las separa), Problema/Proceso/Solución/Resultado, carrusel con scroll-snap.
 - [ ] **T5 Animaciones:** scroll reveals suaves, rebote de la flecha, `prefers-reduced-motion`.
 - [ ] **T6 SEO, accesibilidad y rendimiento:** meta/OG con URL final, favicon, fuentes autoalojadas, WebP, `aria-*`, contraste, Lighthouse ≥ 90 ×4.
 - [ ] **T7 Deploy:** plataforma con auto-deploy desde `main`, HTTPS, captura de Lighthouse sobre la URL de producción.
 
 - [x] **T2b Ajustes pedidos por el autor:** capturas de Coffea y Cubrí rehechas en 1440×900 sin el cartel de Netlify; botones "imán" (`.btn` se corre hasta 8 px hacia el cursor, solo con mouse y sin reducir movimiento); el botón de WhatsApp pasa a ser un avatar SVG con auriculares cuyas pupilas y cabeza siguen al cursor (parpadea, enlaza a `wa.me`). _Verificado: transform 8 px/0 al entrar/salir, pupilas a izquierda y derecha, sin errores de JS._
+
+- [x] **T3b Rehecho contra el prototipo:** el autor señaló que T3 (y los textos de T2) no coincidían con Figma. Se compararon, sección por sección y en desktop y mobile, los frames reales (`78:769…78:1049` y `80:398…80:674`) contra capturas del sitio y se rehicieron Skills, Proyectos, Métricas, Experiencia, Sobre mí, Contacto y Footer con las medidas, textos y colores del prototipo. Lo que Figma dejaba como "(a completar)" se llenó con datos reales. Desvíos conscientes: Archivo ExtraBold → Archivo Black (máx. 2 familias tipográficas), "Formulario (bonus)" → "Enviame un mensaje", ítem extra "Idiomas", textos de los principios 02 y 03 escritos por mí (el prototipo solo definía el 01). **Pendiente de verificar antes de entregar: "90+ Lighthouse" y "5 proyectos UX/UI" son cifras del prototipo, aún sin medir/confirmar.** _Los clones temporales usados para capturar el prototipo se borraron (14, por ID)._
+
+- [x] **T3c Mejoras pedidas por el autor:** avatar de WhatsApp siempre visible (globo temporal como antes); botón de tema con giro, anillo y revelado circular (View Transitions, con respaldo y sin movimiento si se reduce); Skills con más herramientas reales del CV, brillo que sigue al cursor y aparición escalonada; Métricas con números que cuentan; Experiencia y formación en dos columnas con línea de tiempo y tarjetas. _Verificado: avatar visible arriba, en Contacto y en el footer; tema alterna y guarda; sin errores de JS._
+
+- [x] **T3d Segunda ronda de mejoras:** flecha del hero con salto periódico hasta el primer scroll; Métricas como sección con título, aire y una línea de contexto por cifra; Sobre mí con datos rápidos, botones CV/Escribime, stickers que flotan y foto con parallax; Contacto con disponibilidad, "en qué ayudo" y brillo que sigue al cursor; Footer con bloque "Quién soy" en el medio. _Verificado en 1440 y 375 (sin overflow ni errores de JS); salto de la flecha y contadores probados._ Textos de "en qué ayudo" y "Quién soy" escritos por Claude: revisar.
+
+- [x] **T3e Tercera ronda:** footer con "Quién soy", Navegación y Redes a la misma distancia (69 px medidos); flecha del hero rediseñada (arco que gira, flecha que cae y texto con destello, más el salto); Contacto sin "Escribime por email" (queda CV y canales en pastillas) y formulario de la misma altura que el texto; acordeón de Sobre mí reserva su alto máximo y no mueve lo de abajo (posición de "Ahora" y Contacto idéntica al abrir/cerrar, en desktop y mobile); foto nueva (mate frente al río) probada en el hero: `hero-desktop-mate.webp` y `hero-mobile-mate.webp` (las anteriores siguen en `assets/img/`). El PNG original pasó a `assets/fotos/originales/hero-mate-mar.png`.
+
+- [x] **T3f:** flecha del hero con una sola animación suave; botón "Escribime" del footer lleva al formulario de Contacto y deja el foco en Nombre; canales de contacto (y GH/in del hero) con logos reales en círculos en vez de nombres. _Verificado: foco en el formulario, sin pestaña nueva, sin errores de JS._
 
 ## Decisiones técnicas
 - CSS puro con variables (espejo de los tokens de Figma), sin Tailwind: menos dependencias y mejor puntaje.
@@ -27,6 +37,6 @@
 - Pendiente: Lighthouse móvil, axe/contraste, prueba con teclado y lector de pantalla.
 
 ## Próximo paso
-T3: Métricas, Experiencia y formación, Sobre mí, Contacto (con botón de envío) y Footer.
+T4: caso-hoypadel.html y 404.html.
 
 _Espejo en Engram (`odd/portfolio-sitio/tasks`): pendiente; el guardado falló por el registro de sesión. El archivo local es la fuente._

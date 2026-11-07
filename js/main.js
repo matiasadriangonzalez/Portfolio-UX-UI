@@ -27,38 +27,103 @@
   menu?.querySelectorAll('[data-menu-close]').forEach((el) => el.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu && !menu.hidden) setMenu(false); });
 
-  /* Tema claro / oscuro */
-  themeBtn?.addEventListener('click', () => {
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  /* Tema claro / oscuro, con efecto: el ícono gira y el nuevo tema se "revela" en círculo desde el botón
+     (View Transitions API donde exista; en el resto, el giro del ícono y el cambio normal). */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const applyTheme = (next) => {
     root.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch (e) { /* sin almacenamiento */ }
-  });
+  };
+  themeBtn?.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+  themeBtn?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    themeBtn.classList.remove('is-spinning');
+    void themeBtn.offsetWidth; // reinicia la animación si se toca rápido
+    themeBtn.classList.add('is-spinning');
+    themeBtn.setAttribute('aria-pressed', String(next === 'dark'));
 
-  /* Botón de WhatsApp: aparece al salir del hero y se oculta en Contacto y footer, donde ya hay enlace */
-  if (fab && 'IntersectionObserver' in window) {
-    const hero = document.getElementById('inicio');
-    const quiet = [document.getElementById('contacto'), document.querySelector('[data-footer]')].filter(Boolean);
-    let pastHero = false;
-    let inQuiet = 0;
-    const bubble = document.querySelector('[data-fab-bubble]');
-    let bubbleDone = false;
-    const update = () => {
-      const visible = pastHero && inQuiet === 0;
-      fab.classList.toggle('is-visible', visible);
-      /* El globo se muestra una sola vez por visita: aparece al salir del hero y se retira a los 6 s */
-      if (visible && bubble && !bubbleDone) {
-        bubbleDone = true;
-        setTimeout(() => bubble.classList.add('is-shown'), 700);
-        setTimeout(() => bubble.classList.remove('is-shown'), 6700);
-      }
-    };
-    if (hero) new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }, { rootMargin: '-40% 0px 0px 0px' }).observe(hero);
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { inQuiet += e.isIntersecting ? 1 : -1; });
-      inQuiet = Math.max(0, inQuiet);
-      update();
+    if (!document.startViewTransition || reduceMotion.matches) {
+      applyTheme(next);
+      return;
+    }
+    const r = themeBtn.getBoundingClientRect();
+    const x = r.left + r.width / 2;
+    const y = r.top + r.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const vt = document.startViewTransition(() => applyTheme(next));
+    vt.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 650, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(() => {});
+  });
+  themeBtn?.addEventListener('animationend', () => themeBtn.classList.remove('is-spinning'));
+
+  /* Avatar de WhatsApp: siempre visible. El globo "¿Hablamos? Escribime" aparece unos segundos al cargar
+     y vuelve al pasar el mouse o enfocar el avatar (solo CSS). */
+  const bubble = document.querySelector('[data-fab-bubble]');
+  if (bubble) {
+    setTimeout(() => bubble.classList.add('is-shown'), 1500);
+    setTimeout(() => bubble.classList.remove('is-shown'), 7500);
+  }
+
+  /* Aparición suave al scrollear (solo con JS; con "reducir movimiento" se muestra todo de una) */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (revealEls.length && 'IntersectionObserver' in window && !reduceMotion.matches) {
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-in');
+        ro.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    revealEls.forEach((el) => {
+      const group = el.closest('[data-reveal-group]');
+      if (group) el.style.setProperty('--d', `${[...group.querySelectorAll('[data-reveal]')].indexOf(el) * 90}ms`);
+      ro.observe(el);
     });
-    quiet.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* Métricas: los números cuentan hasta su valor al entrar en pantalla */
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window && !reduceMotion.matches) {
+    const co = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        co.unobserve(e.target);
+        const el = e.target;
+        const end = Number(el.dataset.count);
+        const t0 = performance.now();
+        const dur = 1100;
+        const tick = (t) => {
+          const p = Math.min((t - t0) / dur, 1);
+          el.textContent = String(Math.round(end * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        el.textContent = '0';
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => co.observe(el));
+  }
+
+  /* Skills: el brillo de cada baldosa sigue al cursor */
+  if (window.matchMedia('(hover: hover)').matches && !reduceMotion.matches) {
+    document.querySelectorAll('.skill, [data-glow]').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--gx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--gy', `${e.clientY - r.top}px`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.removeProperty('--gx');
+        card.style.removeProperty('--gy');
+      });
+    });
   }
 
   /* Baldosas de proyecto: inclinación hacia el cursor y brillo que lo sigue.
@@ -128,9 +193,112 @@
     }, { passive: true });
   }
 
-  /* La flecha del hero deja de moverse tras el primer scroll */
+  /* Principios de "Sobre mí": acordeón con un solo ítem abierto, accesible por teclado */
+  document.querySelectorAll('[data-accordion]').forEach((acc) => {
+    const buttons = [...acc.querySelectorAll('.acc__btn')];
+    const toggle = (btn) => {
+      const willOpen = btn.getAttribute('aria-expanded') !== 'true';
+      buttons.forEach((b) => {
+        const open = b === btn && willOpen;
+        b.setAttribute('aria-expanded', String(open));
+        document.getElementById(b.getAttribute('aria-controls')).hidden = !open;
+      });
+    };
+    buttons.forEach((b) => b.addEventListener('click', () => toggle(b)));
+
+    /* Reserva el alto del caso más alto (un ítem abierto) para que al expandir no se mueva nada de lo que está debajo */
+    const reserve = () => {
+      const state = buttons.map((b) => b.getAttribute('aria-expanded') === 'true');
+      acc.style.minHeight = '0px';
+      let tallest = 0;
+      buttons.forEach((open) => {
+        buttons.forEach((b) => { document.getElementById(b.getAttribute('aria-controls')).hidden = b !== open; });
+        tallest = Math.max(tallest, acc.offsetHeight);
+      });
+      buttons.forEach((b, i) => { document.getElementById(b.getAttribute('aria-controls')).hidden = !state[i]; });
+      acc.style.minHeight = `${tallest}px`;
+    };
+    reserve();
+    window.addEventListener('resize', reserve);
+    if (document.fonts?.ready) document.fonts.ready.then(reserve);
+  });
+
+  /* El botón "Escribime" del footer lleva al formulario y deja el cursor listo en el campo Nombre */
+  document.querySelectorAll('[data-goto-form]').forEach((a) => {
+    a.addEventListener('click', () => {
+      const field = document.getElementById('f-nombre');
+      if (field) setTimeout(() => field.focus({ preventScroll: true }), reduceMotion.matches ? 0 : 800);
+    });
+  });
+
+  /* Formulario de contacto: validación accesible y envío sin recargar (Netlify Forms) */
+  const form = document.querySelector('[data-form]');
+  if (form) {
+    const status = form.querySelector('[data-form-status]');
+    const rules = {
+      nombre: (v) => (v.trim().length >= 2 ? '' : 'Escribí tu nombre (mínimo 2 letras).'),
+      email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'Escribí un email válido, por ejemplo nombre@correo.com.'),
+      mensaje: (v) => (v.trim().length >= 10 ? '' : 'Contame un poco más (mínimo 10 caracteres).'),
+    };
+    const check = (field) => {
+      const msg = rules[field.name](field.value);
+      const out = document.getElementById(`e-${field.name}`);
+      field.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      out.textContent = msg;
+      out.hidden = !msg;
+      return !msg;
+    };
+    const fields = [...form.querySelectorAll('input[name], textarea[name]')].filter((f) => rules[f.name]);
+    fields.forEach((f) => f.addEventListener('blur', () => check(f)));
+    fields.forEach((f) => f.addEventListener('input', () => { if (f.getAttribute('aria-invalid') === 'true') check(f); }));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const invalid = fields.filter((f) => !check(f));
+      if (invalid.length) {
+        status.textContent = 'Revisá los campos marcados.';
+        invalid[0].focus();
+        return;
+      }
+      const btn = form.querySelector('[type="submit"]');
+      btn.disabled = true;
+      status.textContent = 'Enviando…';
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString(),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        fields.forEach((f) => f.removeAttribute('aria-invalid'));
+        status.textContent = '¡Gracias! Recibí tu mensaje y te respondo pronto.';
+      } catch (err) {
+        status.innerHTML = 'No pude enviar el mensaje. Escribime por <a href="https://wa.me/543442670050" target="_blank" rel="noopener">WhatsApp</a> o a <a href="mailto:matiasadriangonzalez23@gmail.com">matiasadriangonzalez23@gmail.com</a>.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+
+  /* La flecha del hero se anima suavemente hasta el primer scroll y después se queda quieta */
   if (hint) {
     const calm = () => { hint.dataset.calm = ''; window.removeEventListener('scroll', calm); };
     window.addEventListener('scroll', calm, { passive: true });
+  }
+
+  /* Sobre mí: la foto se mueve apenas hacia el cursor (parallax suave) */
+  const figure = document.querySelector('.about__figure');
+  if (figure && window.matchMedia('(hover: hover)').matches && !reduceMotion.matches) {
+    figure.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = figure.getBoundingClientRect();
+      figure.style.setProperty('--px', `${(((e.clientX - r.left) / r.width - 0.5) * -14).toFixed(1)}px`);
+      figure.style.setProperty('--py', `${(((e.clientY - r.top) / r.height - 0.5) * -14).toFixed(1)}px`);
+    });
+    figure.addEventListener('pointerleave', () => {
+      figure.style.removeProperty('--px');
+      figure.style.removeProperty('--py');
+    });
   }
 })();

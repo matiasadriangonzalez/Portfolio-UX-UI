@@ -43,6 +43,12 @@
   color: var(--on-dark);
 }
 
+.btn--outline {
+  --veil: rgb(35 50 69 / 0.08);
+  border-color: color-mix(in srgb, var(--text) 55%, transparent);
+  color: var(--text);
+}
+
 .btn--light {
   background: var(--crema);
   color: var(--marino);
@@ -100,6 +106,7 @@
 
 /* Botón de ícono (redes, tema, menú) */
 .icon-btn {
+  position: relative;
   display: grid;
   place-items: center;
   width: 44px;
@@ -264,4 +271,74 @@
 
 .btn:active {
   transform: translate(var(--mx, 0px), var(--my, 0px)) scale(0.98);
+}
+
+/* Botón de tema: al seleccionarlo, el ícono gira y suelta un anillo */
+.icon-btn.is-spinning svg {
+  animation: theme-spin 0.65s var(--ease);
+}
+
+.icon-btn.is-spinning::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  animation: theme-ring 0.65s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes theme-spin {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+
+  45% {
+    transform: rotate(200deg) scale(0.7);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes theme-ring {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+/* Cambio de tema: el nuevo tema se revela en círculo desde el botón (el recorte lo anima main.js) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* Aparición suave al scrollear (main.js agrega .is-in; con "reducir movimiento" no se oculta nada) */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    translate: 0 28px;
+    transition: opacity 0.7s var(--ease) var(--d, 0ms), translate 0.7s var(--ease) var(--d, 0ms);
+  }
+
+  .js [data-reveal].is-in {
+    opacity: 1;
+    translate: 0 0;
+  }
 }

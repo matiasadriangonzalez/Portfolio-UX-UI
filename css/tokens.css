@@ -10,7 +10,7 @@
   /* Color · Light (default) */
   --bg: var(--crema);
   --text: var(--marino);
-  --muted: #4f5a70; /* azul polvo oscurecido: 5.9:1 sobre crema (AA para texto chico) */
+  --muted: #4c5765; /* del prototipo: más de 6:1 sobre crema (AA) */
   --tile-alt: var(--piedra);
   --accent: var(--lino);
   --line: rgb(35 50 69 / 0.18);
@@ -21,10 +21,10 @@
   /* Baldosas (skills y proyectos): "a" oscura, "b" clara en tema claro */
   --tile-a-bg: var(--marino);
   --tile-a-fg: var(--crema);
-  --tile-a-muted: #b9c1cf;
+  --tile-a-muted: #b9b5af;
   --tile-b-bg: var(--piedra);
   --tile-b-fg: var(--marino);
-  --tile-b-muted: #4a5568; /* más de 5:1 sobre piedra */
+  --tile-b-muted: #4c5765; /* más de 5:1 sobre piedra */
 
   /* Tipografía */
   --font-display: "Archivo Black", "Arial Black", system-ui, sans-serif;
