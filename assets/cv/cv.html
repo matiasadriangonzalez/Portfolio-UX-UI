@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Matías Adrián González · CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap');
+  @page { size: A4; margin: 0; }
+  :root { --marino:#233245; --lino:#C9BEAE; --crema:#F0EDE7; --azul:#626E84; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body { font-family: 'Inter', system-ui, sans-serif; color: var(--marino); background: #fff; font-size: 9.4pt; line-height: 1.42; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .head { background: var(--marino); color: var(--crema); padding: 11mm 15mm 8mm; }
+  .head h1 { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; font-size: 29pt; line-height: 1.05; letter-spacing: -0.5pt; }
+  .head .rol { margin-top: 3mm; font-size: 11pt; color: var(--lino); font-weight: 500; }
+  .contacto { margin-top: 4mm; display: flex; flex-wrap: wrap; gap: 2mm 7mm; font-size: 9pt; color: var(--crema); }
+  .contacto span b { color: var(--lino); font-weight: 600; margin-right: 1.5mm; }
+  .cuerpo { display: grid; grid-template-columns: 1fr 58mm; gap: 10mm; padding: 8mm 15mm 8mm; }
+  h2 { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; font-size: 10.5pt; text-transform: uppercase; letter-spacing: 1pt; color: var(--marino); padding-bottom: 1.6mm; margin-bottom: 3.2mm; border-bottom: 1.4pt solid var(--lino); }
+  section { margin-bottom: 6mm; }
+  .perfil { font-size: 10pt; }
+  .item { margin-bottom: 3.8mm; }
+  .item h3 { font-size: 10.4pt; font-weight: 600; display: flex; justify-content: space-between; gap: 4mm; }
+  .item h3 small { font-weight: 500; font-size: 8.6pt; color: var(--azul); white-space: nowrap; }
+  .item p { margin-top: 0.8mm; color: #364458; }
+  .item .stack { margin-top: 1.2mm; font-size: 8.6pt; color: var(--azul); font-weight: 500; }
+  ul { list-style: none; }
+  ul li { padding-left: 4mm; position: relative; margin-bottom: 1.4mm; color: #364458; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 2.1mm; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--lino); }
+  .lado { background: var(--crema); margin: -8mm -15mm -8mm 0; padding: 8mm 12mm 8mm 9mm; }
+  .tags { display: flex; flex-wrap: wrap; gap: 1.6mm; }
+  .tags span { border: 0.8pt solid var(--lino); border-radius: 99px; padding: 0.6mm 2.6mm; font-size: 8.4pt; background: #fff; font-weight: 500; }
+  .grupo { margin-bottom: 4mm; }
+  .grupo h4 { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.8pt; color: var(--azul); margin-bottom: 1.6mm; font-weight: 600; }
+  .nota { font-size: 8.6pt; color: var(--azul); }
+</style>
+</head>
+<body>
+  <header class="head">
+    <h1>Matías Adrián González</h1>
+    <div class="rol">Estudiante de Lic. en Sistemas de Información · Desarrollo web y UX/UI</div>
+    <div class="contacto">
+      <span><b>Email</b>matiasadriangonzalez23@gmail.com</span>
+      <span><b>WhatsApp</b>+54 3442 670050</span>
+      <span><b>LinkedIn</b>linkedin.com/in/matías-gonzález-69366821a</span>
+      <span><b>GitHub</b>github.com/matiasadriangonzalez</span>
+      <span><b>Ubicación</b>Argentina (GMT-3)</span>
+    </div>
+  </header>
+
+  <main class="cuerpo">
+    <div>
+      <section>
+        <h2>Perfil</h2>
+        <p class="perfil">Estudiante de Sistemas de Información, autodidacta y con mentalidad emprendedora. Construí por mi cuenta una aplicación completa de reservas de canchas de pádel (pagos, notificaciones por WhatsApp y paneles de administración) y hoy estudio lo que me faltaba: investigar usuarios, diseñar y validar antes de construir. Busco sumarme a un equipo donde seguir aprendiendo y aportar en desarrollo web y UX/UI.</p>
+      </section>
+
+      <section>
+        <h2>Proyectos</h2>
+        <div class="item">
+          <h3>HoyPadel · Sistema de reservas multi-club <small>2026</small></h3>
+          <p>Diseño y desarrollo full-stack de una plataforma de turnos para clubes de pádel: landing pública por club, reserva con pago de seña por Mercado Pago, confirmación y recordatorio por WhatsApp, panel de administración y panel master para gestionar todos los clubes.</p>
+          <div class="stack">Next.js · FastAPI · PostgreSQL · Mercado Pago · Twilio</div>
+        </div>
+        <div class="item">
+          <h3>Cubrí Seguros · Contratación digital <small>2026</small></h3>
+          <p>Flujo de cotización y contratación de seguros en pocos pasos, con validación de formularios, estados de error y éxito, y modo oscuro.</p>
+          <div class="stack">HTML · CSS · JavaScript · UX</div>
+        </div>
+        <div class="item">
+          <h3>Coffea · Landing de cafetería <small>2026</small></h3>
+          <p>Landing de una cafetería con catálogo de productos, maquetada con HTML y CSS a partir de un PRD.</p>
+          <div class="stack">HTML · CSS</div>
+        </div>
+        <div class="item">
+          <h3>OpenArt · Prototipo de marketplace de arte digital <small>2026</small></h3>
+          <p>Prototipo navegable de 9 pantallas (búsqueda, detalle de obra, perfiles, carrito y ajustes de cuenta) diseñado en Figma.</p>
+          <div class="stack">Figma · UX/UI</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Formación</h2>
+        <div class="item">
+          <h3>Licenciatura en Sistemas de Información <small>en curso</small></h3>
+          <p>Universidad Autónoma de Entre Ríos (UADER), Facultad de Ciencia y Tecnología.</p>
+        </div>
+        <div class="item">
+          <h3>Técnico en Administración de Empresas</h3>
+        </div>
+      </section>
+    </div>
+
+    <aside class="lado">
+      <section>
+        <h2>Habilidades</h2>
+        <div class="grupo"><h4>Diseño</h4><div class="tags"><span>Figma</span><span>Wireframes</span><span>Design system</span><span>Prototipado</span><span>Test de usabilidad</span></div></div>
+        <div class="grupo"><h4>Front-end</h4><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Next.js</span></div></div>
+        <div class="grupo"><h4>Back-end</h4><div class="tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>APIs REST</span></div></div>
+        <div class="grupo"><h4>Integraciones</h4><div class="tags"><span>Mercado Pago</span><span>WhatsApp (Twilio)</span></div></div>
+        <div class="grupo"><h4>Herramientas</h4><div class="tags"><span>Git</span><span>GitHub</span></div></div>
+      </section>
+
+      <section>
+        <h2>Certificaciones</h2>
+        <ul>
+          <li>Desarrollo web</li>
+          <li>JavaScript</li>
+          <li>React JS</li>
+          <li>Fundamentos de ciberseguridad</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Portfolio</h2>
+        <p class="nota">Casos de estudio, proyectos y contacto en mi portfolio web (próximamente en línea).</p>
+      </section>
+    </aside>
+  </main>
+</body>
+</html>
