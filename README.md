@@ -25,7 +25,7 @@ Trabajo final de **Diseño UX-UI 2026** · Licenciatura en Sistemas de Informaci
 3. **Moodboard y concepto:** palabras clave _autodidacta_, _práctico_ y _en evolución_, traducidas a color, tipografía e imágenes.
 4. **Arquitectura de información:** sitemap y card sorting.
 5. **Wireframes, design system y prototipo:** en Figma (wireframes mobile y desktop, tokens y 5 componentes con variantes, prototipo clickeable de alta fidelidad).
-6. **Validación:** test de usabilidad con al menos 3 personas _(pendiente)_.
+6. **Validación:** test de usabilidad con al menos 3 personas _(primera ronda hecha con 3 personas; ver "Test de usabilidad")_.
 
 _Las imágenes son grandes: hacé clic en cada una para verla a tamaño completo._
 
@@ -130,6 +130,21 @@ Prototipo clickeable en Figma (desktop y mobile), construido con los componentes
 Las capturas de proyectos se muestran dentro de marcos con esquinas muy redondeadas (sin barra de ventana), como en el portfolio de referencia de Joaquín. HoyPadel, OpenArt, Coffea y Cubrí Seguros usan capturas reales: HoyPadel se capturó levantando la landing en local, OpenArt desde la demo pública de Figma Make, Coffea abriendo la landing y Cubrí desde la carpeta de capturas del proyecto. Efecto previsto en el código: al pasar el mouse por un tile, éste se inclina en perspectiva hacia el cursor y el brillo se desplaza a la esquina donde está (CSS `perspective` + `rotateX/rotateY` calculados con JavaScript; solo con `hover: hover` y sin `prefers-reduced-motion`). Figma no permite rotar según la posición del mouse, así que se documenta aquí. El caso de HoyPadel incluye un carrusel horizontal (desplazamiento nativo, sin librerías) con la landing, el flujo de reserva (elegir horario y datos con pago de la seña) y el panel de gestión: dashboard, calendario de turnos, canchas, horarios y configuración, capturados de un club de prueba con datos inventados (acceso en `docs/ACCESO-DEMO-HOYPADEL.md`).
 
 **Encabezado del caso de estudio (inspirado en el detalle de proyectos de Joaquín):** a la izquierda el texto (categoría, nombre grande, estado, resumen, viñetas, datos y botón) y a la derecha dos ventanas de navegador superpuestas (landing y panel de gestión) más un celular con la pantalla de reserva. Al pasar el mouse las ventanas se separan con una animación suave (en el código: `transform` con transición, solo `hover: hover` y sin `prefers-reduced-motion`). En mobile el visual va arriba y el texto abajo. Debajo siguen Problema, Proceso, Solución y Resultado y aprendizaje, y el carrusel de capturas.
+
+## Test de usabilidad (prototipo de Figma)
+
+Primera ronda con **3 personas** sobre el prototipo de alta fidelidad (una en celular y las otras con el mismo prototipo). Se les pidió, sin explicar cómo hacerlo: (1) encontrar un proyecto y abrir su detalle, (2) averiguar qué sabe hacer Matías y (3) contactarlo por WhatsApp. Antes de empezar se les avisó que solo el caso de HoyPadel tiene página de detalle en el prototipo.
+
+| # | Tarea | ¿La completó? | Qué se observó | Gravedad | Cambio aplicado |
+|---|---|---|---|---|---|
+| 1 | Abrir el detalle de un proyecto | Sí (3 de 3), con HoyPadel | Navegaron y scrollearon sin dudas; entraron a HoyPadel y volvieron a la home sin ayuda | — | Sin cambios |
+| 2 | Saber qué sabe hacer Matías | Sí (3 de 3) | Llegaron a Skills y a Sobre mí rápido, también desde el celular | — | Sin cambios |
+| 3 | Contactar por WhatsApp | Sí (3 de 3) | El botón fue lo primero que vieron. Al tocarlo, Figma pide iniciar sesión y no los llevó a WhatsApp | Baja (límite del prototipo, el sitio abre `wa.me` directo) | Documentado; se verifica en el sitio real |
+| H1 | Redes sociales | No se pudo | Los íconos y los enlaces de redes del footer no llevaban a ningún lado | Media | **Corregido:** GitHub, LinkedIn, Instagram, WhatsApp y email ahora tienen enlace en el prototipo |
+| H2 | Otros proyectos (OpenArt, Coffea, Cubrí) | No se pudo | Los tres testers tocaron los demás tiles y no pasaba nada | Media | **Parcial:** OpenArt ahora abre su prototipo; Coffea y Cubrí quedan pendientes hasta tener su enlace público |
+| H3 | Efecto de las pantallas en el caso de HoyPadel (celular) | Sí | Al activarse el efecto de separación aparecía una marca blanca | Baja | Se limpiaron rellenos y trazos del componente; a verificar en una segunda ronda |
+
+_Pendiente: capturas de antes y después de los cambios más importantes y una segunda ronda corta sobre el sitio en producción._
 
 ## Referencias: qué tomé y qué es propio
 
