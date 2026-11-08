@@ -10,23 +10,25 @@
   :root { --marino:#233245; --lino:#C9BEAE; --crema:#F0EDE7; --azul:#626E84; --texto:#2C3A4D; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 210mm; height: 297mm; overflow: hidden; }
-  body { font-family: 'Inter', system-ui, sans-serif; color: var(--texto); background: #fff; font-size: 8.7pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { display: flex; flex-direction: column; font-family: 'Inter', system-ui, sans-serif; color: var(--texto); background: #fff; font-size: 8.5pt; line-height: 1.36; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-  .head { padding: 13mm 16mm 6mm; border-bottom: 2.2pt solid var(--marino); }
+  .head { padding: 10mm 16mm 5mm; border-bottom: 2.2pt solid var(--marino); }
   .head h1 { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; font-size: 27pt; line-height: 1.05; letter-spacing: -0.4pt; color: var(--marino); }
   .head .rol { margin-top: 2.2mm; font-size: 10.5pt; font-weight: 500; color: var(--azul); }
-  .contacto { margin-top: 4mm; display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 1.4mm 6mm; font-size: 8.4pt; color: var(--marino); }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 8mm; }
+  .foto { width: 25mm; height: 25mm; border-radius: 50%; object-fit: cover; object-position: 50% 24%; border: 1.6pt solid var(--lino); flex: none; }
+  .contacto { margin-top: 3.4mm; display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 1.4mm 6mm; font-size: 8.4pt; color: var(--marino); }
   .contacto b { display: block; font-size: 6.8pt; text-transform: uppercase; letter-spacing: 0.9pt; color: var(--azul); font-weight: 600; }
 
-  .cuerpo { display: grid; grid-template-columns: 1fr 60mm; }
+  .cuerpo { display: grid; grid-template-columns: 1fr 60mm; flex: 1; }
   .main { padding: 7mm 9mm 0 16mm; }
-  .lado { background: var(--crema); padding: 7mm 11mm 0 8mm; height: 249mm; }
+  .lado { background: var(--crema); padding: 7mm 11mm 0 8mm; }
 
   h2 { font-family: 'Archivo Black', 'Inter', sans-serif; font-weight: 400; font-size: 9.6pt; text-transform: uppercase; letter-spacing: 1.1pt; color: var(--marino); padding-bottom: 1.4mm; margin-bottom: 3mm; border-bottom: 0.9pt solid var(--lino); }
-  section { margin-bottom: 5.6mm; }
-  .perfil { font-size: 9.2pt; }
+  section { margin-bottom: 4.6mm; }
+  .perfil { font-size: 8.9pt; }
 
-  .item { margin-bottom: 3.4mm; }
+  .item { margin-bottom: 3mm; }
   .item h3 { font-size: 9.6pt; font-weight: 600; color: var(--marino); display: flex; justify-content: space-between; gap: 4mm; }
   .item h3 small { font-weight: 500; font-size: 8pt; color: var(--azul); white-space: nowrap; }
   .item .lugar { color: var(--azul); font-weight: 500; font-size: 8.4pt; margin-top: 0.3mm; }
@@ -44,6 +46,10 @@
   .comp li { margin-bottom: 2mm; }
   .comp b { display: block; color: var(--marino); font-weight: 600; font-size: 8.7pt; }
   .comp span { font-size: 8pt; line-height: 1.3; display: block; }
+  .exp-intro { margin-bottom: 1.6mm; }
+  .exp { display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; }
+  .exp li { margin-bottom: 0.8mm; }
+  .exp b { color: var(--marino); font-weight: 600; }
   .idiomas { color: var(--azul); font-weight: 500; }
   .idiomas b { color: var(--marino); font-weight: 600; }
   .idiomas i { font-style: normal; margin: 0 1.5mm; }
@@ -52,8 +58,13 @@
 </head>
 <body>
   <header class="head">
-    <h1>Matías Adrián González</h1>
-    <div class="rol">Estudiante de Licenciatura en Sistemas de Información · Desarrollo web y UX/UI</div>
+    <div class="top">
+      <div>
+        <h1>Matías Adrián González</h1>
+        <div class="rol">Estudiante de Licenciatura en Sistemas de Información<br>Desarrollo web y UX/UI</div>
+      </div>
+      <img class="foto" src="../fotos/foto-sobre-mi.jpg" alt="Matías Adrián González">
+    </div>
     <div class="contacto">
       <span><b>Email</b>matiasadriangonzalez23@gmail.com</span>
       <span><b>Teléfono / WhatsApp</b>+54 3442 670050</span>
@@ -68,7 +79,18 @@
     <main class="main">
       <section>
         <h2>Perfil profesional</h2>
-        <p class="perfil">Estudiante de Sistemas de Información, autodidacta, autoexigente y con mentalidad emprendedora. Tengo iniciativa para liderar y organizar el trabajo, y facilidad para comunicar ideas técnicas en términos simples. Construí por mi cuenta una aplicación completa de reservas de canchas de pádel (pagos, notificaciones por WhatsApp y paneles de administración) y hoy estudio lo que me faltaba: investigar usuarios, diseñar y validar antes de construir. Busco sumarme a un equipo donde seguir aprendiendo y aportar en desarrollo web y UX/UI.</p>
+        <p class="perfil">Estudiante de Sistemas de Información, autodidacta y autoexigente. Emprendí en ventas y servicios, donde aprendí a hacerme cargo de varias tareas a la vez y a ajustar el negocio sobre la marcha. Construí por mi cuenta una aplicación completa de reservas de pádel y hoy estudio lo que me faltaba: investigar usuarios, diseñar y validar antes de construir. Busco sumarme a un equipo donde seguir aprendiendo y aportar en desarrollo web y UX/UI.</p>
+      </section>
+
+      <section>
+        <h2>Experiencia emprendedora</h2>
+        <p class="exp-intro">Emprendimientos propios y compartidos en los que vendí, probé y ajusté el negocio sobre la marcha, haciéndome cargo de varias tareas a la vez.</p>
+        <ul class="puntos exp">
+          <li><b>Marca de ropa</b></li>
+          <li><b>Venta de termos para mate</b></li>
+          <li><b>Venta de dispositivos Apple</b></li>
+          <li><b>Lavadero de autos</b></li>
+        </ul>
       </section>
 
       <section>
@@ -88,10 +110,7 @@
         <div class="item">
           <h3>HoyPadel · Sistema de reservas multi-club <small>2026</small></h3>
           <div class="lugar">Proyecto propio · Diseño y desarrollo full-stack</div>
-          <ul class="puntos" style="margin-top:1mm">
-            <li>Landing pública por club, reserva con pago de seña por Mercado Pago y confirmación y recordatorio por WhatsApp.</li>
-            <li>Panel de administración del club y panel master para gestionar todos los clubes.</li>
-          </ul>
+          <p>Landing pública por club, reserva con pago de seña por Mercado Pago, confirmación y recordatorio por WhatsApp, panel de administración del club y panel master para gestionar todos los clubes.</p>
           <div class="stack">Next.js · FastAPI · PostgreSQL · Mercado Pago · Twilio</div>
         </div>
         <div class="item">
@@ -112,10 +131,6 @@
           <p>Prototipo navegable de 9 pantallas (búsqueda, detalle de obra, perfiles, carrito y ajustes de cuenta).</p>
           <div class="stack">Figma · Prototipado</div>
         </div>
-      <section>
-        <h2>Idiomas</h2>
-        <p class="idiomas"><b>Español</b> nativo <i>·</i> <b>Inglés</b> básico a intermedio</p>
-      </section>
     </main>
 
     <aside class="lado">
@@ -131,9 +146,9 @@
       <section>
         <h2>Competencias</h2>
         <ul class="comp">
-          <li><b>Liderazgo</b><span>Iniciativa para organizar y llevar el trabajo a un objetivo.</span></li>
-          <li><b>Comunicación</b><span>Explico ideas técnicas de forma clara y escucho al usuario.</span></li>
-          <li><b>Autoexigencia</b><span>Busco un estándar alto y reviso mi trabajo hasta que lo cumple.</span></li>
+          <li><b>Iniciativa y responsabilidad</b><span>Me hice cargo de varias tareas en mis emprendimientos.</span></li>
+          <li><b>Comunicación</b><span>Explico ideas técnicas con claridad.</span></li>
+          <li><b>Autoexigencia</b><span>Reviso mi trabajo hasta cumplir el estándar.</span></li>
           <li><b>Autodidacta</b><span>Aprendo por cuenta propia y lo aplico en proyectos reales.</span></li>
           <li><b>Resolución de problemas</b><span>Analizo el problema antes de construir la solución.</span></li>
         </ul>
@@ -141,12 +156,12 @@
 
       <section>
         <h2>Certificaciones</h2>
-        <ul class="simple">
-          <li>Desarrollo web</li>
-          <li>JavaScript</li>
-          <li>React JS</li>
-          <li>Fundamentos de ciberseguridad</li>
-        </ul>
+        <div class="grupo"><p>Desarrollo web · JavaScript · React JS · Fundamentos de ciberseguridad</p></div>
+      </section>
+
+      <section>
+        <h2>Idiomas</h2>
+        <div class="grupo"><p>Español: nativo · Inglés: básico a intermedio</p></div>
       </section>
 
     </aside>
