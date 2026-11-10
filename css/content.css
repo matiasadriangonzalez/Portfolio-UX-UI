@@ -903,6 +903,34 @@ ol {
   line-height: 1.55;
 }
 
+/* Logros de cada ítem de la línea de tiempo */
+.tl__wins {
+  display: grid;
+  gap: var(--s-2);
+  max-width: 54ch;
+  margin-top: var(--s-3);
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.tl__wins li {
+  position: relative;
+  padding-left: var(--s-5);
+}
+
+.tl__wins li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text);
+}
+
 .tl .chips {
   margin-top: var(--s-3);
   padding-top: 0;
