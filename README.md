@@ -135,7 +135,7 @@ Las capturas de proyectos se muestran dentro de marcos con esquinas muy redondea
 
 ## Test de usabilidad (prototipo de Figma)
 
-Primera ronda con **3 personas** sobre el prototipo de alta fidelidad (una en celular y las otras con el mismo prototipo). Se les pidió, sin explicar cómo hacerlo: (1) encontrar un proyecto y abrir su detalle, (2) averiguar qué sabe hacer Matías y (3) contactarlo por WhatsApp. Antes de empezar se les avisó que solo el caso de HoyPadel tiene página de detalle en el prototipo.
+Primera ronda con **3 personas** (Joaquín Parodi, Franco Frias y Santiago Stecklein) sobre el prototipo de alta fidelidad (una en celular y las otras con el mismo prototipo). Se les pidió, sin explicar cómo hacerlo: (1) encontrar un proyecto y abrir su detalle, (2) averiguar qué sabe hacer Matías y (3) contactarlo por WhatsApp. Antes de empezar se les avisó que solo el caso de HoyPadel tiene página de detalle en el prototipo.
 
 | # | Tarea | ¿La completó? | Qué se observó | Gravedad | Cambio aplicado |
 |---|---|---|---|---|---|
