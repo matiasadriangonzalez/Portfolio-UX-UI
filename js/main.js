@@ -274,7 +274,7 @@
         fields.forEach((f) => f.removeAttribute('aria-invalid'));
         status.textContent = '¡Gracias! Recibí tu mensaje y te respondo pronto.';
       } catch (err) {
-        status.innerHTML = 'No pude enviar el mensaje. Escribime por <a href="https://wa.me/543442670050" target="_blank" rel="noopener">WhatsApp</a> o a <a href="mailto:matiasadriangonzalez23@gmail.com">matiasadriangonzalez23@gmail.com</a>.';
+        status.innerHTML = 'No pude enviar el mensaje. Escribime por <a href="https://wa.me/543442670050" target="_blank" rel="noopener noreferrer">WhatsApp</a> o a <a href="mailto:matiasadriangonzalez23@gmail.com">matiasadriangonzalez23@gmail.com</a>.';
       } finally {
         btn.disabled = false;
       }
