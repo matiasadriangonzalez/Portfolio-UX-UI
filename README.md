@@ -69,7 +69,7 @@ Decisiones de diseño tomadas a partir de las referencias:
 - **Footer con llamado a la acción:** bloque marino con "Hablemos de tu negocio", navegación repetida, redes (GitHub, LinkedIn, Instagram, WhatsApp, email y CV), marca decorativa y franja legal con año y crédito de tecnología, más un botón "Volver arriba". Cubre lo que pide la consigna para el footer sin recargar la página. El footer llega hasta el borde inferior de la página, con solo las esquinas superiores redondeadas y el mismo ancho que la barra de navegación (también en la página del caso de estudio).
 - **Contacto rápido sin recargar:** Instagram y WhatsApp se suman a las listas que ya existían (footer y Contacto) y hay **un solo elemento flotante**, un botón de WhatsApp chico abajo a la derecha, sin animación permanente: solo reacciona al pasar el mouse con un halo suave (el mismo criterio que las cards). En el sitio aparece al pasar el hero, el halo se desactiva con `prefers-reduced-motion` y tiene nombre accesible ("Escribime por WhatsApp"). No se usa el verde de la marca de WhatsApp para respetar la paleta.
 - **Skills como tiles bento** (marino y piedra alternados, con chips y brillo al pasar el mouse) en lugar de una lista de texto: misma familia visual que los tiles de proyecto.
-- **Métricas como banda compacta:** la consigna exige la sección (3 a 4 cifras o logros), así que se resuelve con una banda marino con cifras grandes y una etiqueta de una línea (5 proyectos UX/UI, 4 certificados, 1 app de turnos, Lighthouse 90+), en lugar de una sección grande.
+- **Métricas como banda compacta:** la consigna exige la sección (3 a 4 cifras o logros), así que se resuelve con una banda marino con cifras grandes y una etiqueta de una línea (5 proyectos UX/UI, 4 certificados, 2.º año de la Lic. en Sistemas, Lighthouse 90+), en lugar de una sección grande.
 - **Tiles de proyecto** tipo bento inspirados en el portfolio de Joaquín Calderón: título grande, subtítulo con líneas, abanico de pantallas inclinadas y pie con tags y link. Al pasar el mouse o enfocar con teclado el abanico se abre y aparece un brillo radial. El contenido obligatorio y el link siempre son visibles sin hover.
 - **Secciones con pocas cajas y bordes**: más espacio en blanco, líneas finas y tipografía grande, para un resultado minimalista.
 
@@ -156,8 +156,10 @@ Lighthouse en modo móvil, medido el 10 de noviembre de 2026 sobre las URL publi
 
 | Página | Performance | Accessibility | Best Practices | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|
-| Inicio | 99 | 100 | 100 | 100 | 1,8 s | 0,003 | 0 ms |
+| Inicio | 99–100 | 100 | 100 | 100 | 1,4–1,8 s | 0–0,003 | 0 ms |
 | Caso HoyPadel | 99 | 100 | 100 | 100 | 1,9 s | 0 | 0 ms |
+
+En el inicio, Performance varía entre 99 y 100 de una corrida a otra: tres corridas con la línea de comandos dieron 99, 100 y 100, y Chrome DevTools (ventana de incógnito, modo móvil) dio 100.
 
 Decisiones que lo hacen posible: tipografías alojadas en el propio sitio (woff2 con `font-display: swap` y precarga), imágenes WebP con `width` y `height` y prioridad de carga en la imagen principal, `loading="lazy"` debajo del pliegue, sin librerías de terceros y animaciones que se desactivan con `prefers-reduced-motion`.
 
