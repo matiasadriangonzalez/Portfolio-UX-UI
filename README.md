@@ -2,15 +2,17 @@
 
 Trabajo final de **Diseño UX-UI 2026** · Licenciatura en Sistemas de Información · UADER FCyT.
 
-> Estado: en construcción. Este README se completa a medida que avanza el proyecto.
+> Estado: entrega final (10 de noviembre de 2026).
 
 ## Enlaces
 
 | Qué | Dónde |
 |---|---|
-| Sitio publicado | _Pendiente de deploy_ |
+| Sitio publicado | https://matiasadriangonzalez.netlify.app/ |
+| Caso de estudio (HoyPadel) | https://matiasadriangonzalez.netlify.app/caso-hoypadel.html |
+| Repositorio | https://github.com/matiasadriangonzalez/Portfolio-UX-UI |
 | Figma (research, wireframes, design system y prototipo) | https://www.figma.com/design/Tmljy6R7M0EqlpMWRcDYP3 |
-| Reporte Lighthouse (mobile) | _Pendiente_ |
+| Reporte Lighthouse (mobile) | Ver la sección "Rendimiento y accesibilidad" |
 
 ## Stack
 
@@ -25,7 +27,7 @@ Trabajo final de **Diseño UX-UI 2026** · Licenciatura en Sistemas de Informaci
 3. **Moodboard y concepto:** palabras clave _autodidacta_, _práctico_ y _en evolución_, traducidas a color, tipografía e imágenes.
 4. **Arquitectura de información:** sitemap y card sorting.
 5. **Wireframes, design system y prototipo:** en Figma (wireframes mobile y desktop, tokens y 5 componentes con variantes, prototipo clickeable de alta fidelidad).
-6. **Validación:** test de usabilidad con al menos 3 personas _(primera ronda hecha con 3 personas; ver "Test de usabilidad")_.
+6. **Validación:** test de usabilidad con al menos 3 personas _(primera ronda con 3 personas sobre el prototipo y una segunda, informal, sobre el sitio publicado; ver "Test de usabilidad")_.
 
 _Las imágenes son grandes: hacé clic en cada una para verla a tamaño completo._
 
@@ -141,10 +143,23 @@ Primera ronda con **3 personas** sobre el prototipo de alta fidelidad (una en ce
 | 2 | Saber qué sabe hacer Matías | Sí (3 de 3) | Llegaron a Skills y a Sobre mí rápido, también desde el celular | — | Sin cambios |
 | 3 | Contactar por WhatsApp | Sí (3 de 3) | El botón fue lo primero que vieron. Al tocarlo, Figma pide iniciar sesión y no los llevó a WhatsApp | Baja (límite del prototipo, el sitio abre `wa.me` directo) | Documentado; se verifica en el sitio real |
 | H1 | Redes sociales | No se pudo | Los íconos y los enlaces de redes del footer no llevaban a ningún lado | Media | **Corregido:** GitHub, LinkedIn, Instagram, WhatsApp y email ahora tienen enlace en el prototipo |
-| H2 | Otros proyectos (OpenArt, Coffea, Cubrí) | No se pudo | Los tres testers tocaron los demás tiles y no pasaba nada | Media | **Parcial:** OpenArt ahora abre su prototipo; Coffea y Cubrí quedan pendientes hasta tener su enlace público |
+| H2 | Otros proyectos (OpenArt, Coffea, Cubrí) | No se pudo | Los tres testers tocaron los demás tiles y no pasaba nada | Media | **Corregido:** en el sitio, OpenArt abre su prototipo, y Coffea y Cubrí enlazan a sus sitios publicados ([Coffea](https://coffea-ar.netlify.app/) y [Cubrí](https://cubri-seguros.netlify.app/)) |
 | H3 | Efecto de las pantallas en el caso de HoyPadel (celular) | Sí | Al activarse el efecto de separación aparecía una marca blanca | Baja | Se limpiaron rellenos y trazos del componente; a verificar en una segunda ronda |
 
-_Pendiente: capturas de antes y después de los cambios más importantes y una segunda ronda corta sobre el sitio en producción._
+**Segunda ronda, sobre el sitio publicado (informal):** los padres del autor recorrieron el sitio publicado. Encontraron todo lo que buscaban y lo valoraron bien. No aparecieron hallazgos nuevos, por lo que no se aplicaron cambios en esta ronda. No se registró una tabla de tareas como en la primera.
+
+_Pendiente: capturas de antes y después de los cambios más importantes del prototipo._
+
+## Rendimiento y accesibilidad
+
+Lighthouse en modo móvil, medido el 10 de noviembre de 2026 sobre las URL publicadas:
+
+| Página | Performance | Accessibility | Best Practices | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| Inicio | 99 | 100 | 100 | 100 | 1,8 s | 0,003 | 0 ms |
+| Caso HoyPadel | 99 | 100 | 100 | 100 | 1,9 s | 0 | 0 ms |
+
+Decisiones que lo hacen posible: tipografías alojadas en el propio sitio (woff2 con `font-display: swap` y precarga), imágenes WebP con `width` y `height` y prioridad de carga en la imagen principal, `loading="lazy"` debajo del pliegue, sin librerías de terceros y animaciones que se desactivan con `prefers-reduced-motion`.
 
 ## Referencias: qué tomé y qué es propio
 
@@ -171,9 +186,15 @@ Se usó **Claude (Anthropic)** como asistente durante el proceso. Qué se gener�
 - Cálculo de contrastes de color (WCAG) y análisis de los portfolios de referencia.
 - Las **decisiones de concepto** (palabras clave, paleta, tipografía, orden de secciones y contenido) las tomó el autor, que revisó y corrigió cada propuesta.
 - **Foto del autor retocada con IA (ChatGPT):** el autor no tiene una foto formal, así que partió de una foto propia y la modificó y mejoró con un modelo de imágenes. Es la misma en el hero y en Sobre mí (`assets/fotos/foto-sobre-mi.jpg`).
-- **CV en PDF** (`assets/Matias-Gonzalez-CV.pdf`, fuente editable en `assets/cv/cv.html`): armado con la información real del autor (formación, certificaciones, proyectos y habilidades); no incluye fechas ni experiencia laboral porque no estaban confirmadas.
-- _Se completa a medida que se genere código o texto con asistencia._
+- **CV en PDF** (`assets/Matias-Gonzalez-CV.pdf`, fuente editable en `assets/cv/cv.html`): armado con la información real del autor (formación, certificaciones, proyectos, habilidades y emprendimientos); no incluye fechas ni experiencia laboral porque no estaban confirmadas. Las frases de la sección de competencias personales son una propuesta que el autor revisó.
+- **Código del sitio:** el HTML, el CSS y el JavaScript se escribieron con Claude (Claude Code) a partir del diseño de Figma y de las indicaciones del autor, que dirigió cada cambio y lo revisó en el navegador. También se generaron con asistencia el logo vectorizado, los favicons, la imagen de vista previa para redes (`assets/img/og-cover.png`) y las mediciones de Lighthouse.
+- **Textos del sitio:** algunos textos (por ejemplo, descripciones de proyectos y del caso de estudio) fueron propuestos por la IA y el autor los corrigió y aprobó.
 
 ## Despliegue
 
-_Pendiente: se documentará la plataforma elegida, la conexión con este repositorio y el deploy automático en cada push a `main`._
+El sitio está publicado en **Netlify** (HTTPS incluido) y conectado a este repositorio: cada push a la rama `main` dispara un deploy automático.
+
+- **Sin paso de compilación:** el sitio es estático, así que no hay comando de build y el directorio publicado es la raíz del repositorio (`.`).
+- **Configuración:** [`netlify.toml`](netlify.toml) define el directorio publicado, cabeceras de seguridad (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`) y caché de larga duración para las fuentes y las imágenes.
+- **Formulario de contacto:** usa Netlify Forms (atributo `data-netlify` y campo trampa anti-spam). Los mensajes se guardan en el panel de Netlify y llegan por mail mediante una notificación configurada para el formulario `contacto`.
+- **Para reproducirlo:** en Netlify, "Import an existing project" con este repositorio, rama `main`, sin comando de build y con directorio de publicación `.`.
