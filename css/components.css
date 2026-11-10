@@ -135,7 +135,7 @@
 .fab {
   position: fixed;
   right: var(--s-5);
-  bottom: var(--s-7);
+  bottom: 88px; /* deja libre el cartel que Netlify agrega abajo a la derecha en el plan gratuito */
   z-index: 40;
   display: grid;
   place-items: center;
@@ -168,7 +168,7 @@
 .fab-bubble {
   position: fixed;
   right: calc(var(--s-5) + 68px + var(--s-3));
-  bottom: calc(var(--s-7) + 34px);
+  bottom: calc(88px + 34px);
   z-index: 40;
   padding: var(--s-3) var(--s-4);
   border-radius: var(--r-2);
